@@ -35,8 +35,7 @@ namespace XMLApiProject
             nameSpaces.Add("", "");
             var request = new BaseRequest(12345678, DateTime.Now, Services.Utilities.Constants.RequestTypes.MultiUseToken, testRequest)
             {
-                User = "rev099test",
-                Password = "57!sE@3Fm"
+
             };
 
             var serializer = new XmlSerializer(typeof(BaseRequest), "");
