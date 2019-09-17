@@ -13,5 +13,6 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request);
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
         Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
+        Task<BaseResponse<ChangePassword>> ChangePassword(NewPasswordRequest request);
     }
 }
