@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Services.Interfaces;
 
 namespace XMLApiProject.Api.Controllers
@@ -23,6 +24,13 @@ namespace XMLApiProject.Api.Controllers
         public async Task<ActionResult> Ping()
         {
             var response = await _requestHandlerService.Ping();
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetToken([FromBody]GetTokenRequest request)
+        {
+            var response = await _requestHandlerService.GetToken(request);
             return Ok(response);
         }
     }

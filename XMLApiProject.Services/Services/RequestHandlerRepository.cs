@@ -64,7 +64,8 @@ namespace XMLApiProject.Services.Services
             T response;
             using(var stream = new StringReader(decodedResponse))
             {
-                var serializer = new XmlSerializer(typeof(T));
+                var serializer = new XmlSerializer(typeof(T),
+                    new XmlRootAttribute { ElementName = typeof(T).GenericTypeArguments[0].Name}); //It's almost always going to be deserializing as BaseResponse<T>
                 response = (T)serializer.Deserialize(stream);
             }
             return response;

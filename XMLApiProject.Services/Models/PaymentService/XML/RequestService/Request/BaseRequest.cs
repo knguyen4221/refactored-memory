@@ -1,31 +1,38 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
+using XMLApiProject.Services.Models.PaymentService.Interfaces;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request;
 using XMLApiProject.Services.Utilities.Constants;
 
 namespace XMLApiProject.Services.Models.XML.RequestService.Request
 {
+    /// <summary>
+    /// Payment Service request wrapper that contains a lot of constants...
+    /// </summary>
     [XmlRoot("requestHeader")]
     public class BaseRequest
     {
-        //Note: Properties without setters cannot be serialized
         private const int _requestTypeLength = 3;
 
+        #region Underlying object representation
         [XmlIgnore]
         internal DateTime _requestDateTime { get; set; }
         [XmlIgnore]
         internal RequestTypes _requestType { get; set; }
+        //Note: Going to be generated so it's pretty unnecessary
         [XmlIgnore]
         internal int _transactionId { get; set; }
         [XmlIgnore]
-        internal string _requestMessage { get; set; }
+        public IXmlRequestTranslatable _requestMessage { get; set; }
+        #endregion
 
+        #region Xml Object Representation
         public string ClientIdentifier { get; set; } = "SOAP";
-        public string TransactionId { get {
-                return _transactionId.ToString();
-            }
-        }
+        public string TransactionId { get { return _transactionId.ToString(); } set { _transactionId = int.Parse(value); } }
         public string RequestType {
             get {
                 var res = ((int)_requestType).ToString();
@@ -51,9 +58,15 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         }
         public string User { get; set; }
         public string Password { get; set; }
-        
-        public string requestMessage { get { return _requestMessage; } set { _requestMessage = value; } }
 
+        //Note: Setter not necessary since we don't really deserialize request types from XML... 
+        //Note: Properties without setters cannot be serialized, so we have to at least have one even if it doesn't do anything
+        [XmlElement("requestMessage")]
+        [JsonIgnore]
+        public RawRequestMessageString requestMessage { get { return _requestMessage.ToXmlRequestString(); } set { throw new NotImplementedException(); } }
+        #endregion
+
+        #region Constructors   
         public BaseRequest() { }
 
         /// <summary>
@@ -63,13 +76,14 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         /// <param name="_requestDateTime"></param>
         /// <param name="_requestType"></param>
         /// <param name="requestMessage"></param>
-        public BaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, string requestMessage)
+        public BaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, IXmlRequestTranslatable requestMessage)
         {
             _transactionId = transactionId;
             _requestDateTime = requestDateTime;
             _requestType = requestType;
             _requestMessage = requestMessage;
         }
-
+        #endregion
     }
+
 }
