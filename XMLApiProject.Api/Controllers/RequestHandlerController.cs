@@ -96,7 +96,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("binLookup")]
-        public async Task<ActionResult> GetBINLookup([FromBody]BINRequest request)
+        public async Task<ActionResult> BINLookup([FromBody]BINRequest request)
         {
             try
             {
@@ -112,5 +112,29 @@ namespace XMLApiProject.Api.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        // Keeping this inaccessible for now to avoid development issues
+        ///// <summary>
+        ///// Sends a request to update the user's password
+        ///// </summary>
+        ///// <param name="request"></param>
+        ///// <returns></returns>
+        //[HttpPost("changePassword")]
+        //public async Task<ActionResult> ChangePassword([FromBody]NewPasswordRequest request)
+        //{
+        //    try
+        //    {
+        //        var response = await _requestHandlerService.ChangePassword(request);
+        //        return Ok(response);
+        //    }
+        //    catch (SoapEndpointException ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex);
+        //    }
+        //}
     }
 }
