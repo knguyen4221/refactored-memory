@@ -28,7 +28,6 @@ namespace XMLApiProject
             {
                 PaymentAccountNumber = "4111111111111111",
                 ExpirationDate = "1222",
-                SecurityCode = 999,
             };
             var testRequest2 = new PingRequest();
             var nameSpaces = new XmlSerializerNamespaces();

@@ -7,6 +7,7 @@ namespace XMLApiProject.Services.Utilities.Constants
     public enum RequestTypes
     {
         MultiUseToken = 001,
+        EncryptionKey = 003,
         Authorization = 004,
         BINLookup = 005,
         UpdatePassword = 007,

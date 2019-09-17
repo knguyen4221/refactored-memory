@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Services.Interfaces;
+using XMLApiProject.Services.Utilities;
 
 namespace XMLApiProject.Api.Controllers
 {
@@ -20,18 +21,75 @@ namespace XMLApiProject.Api.Controllers
             _requestHandlerService = requestHandlerService;
         }
 
-        [HttpGet]
+        /// <summary>
+        /// Sends a ping request to the BridgePay Gateway
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("ping")]
         public async Task<ActionResult> Ping()
         {
-            var response = await _requestHandlerService.Ping();
-            return Ok(response);
+            try
+            {
+                var response = await _requestHandlerService.Ping();
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+            
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Sends a request for a Multi-Use Request Token
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("multiUseToken")]
         public async Task<ActionResult> GetToken([FromBody]GetTokenRequest request)
         {
-            var response = await _requestHandlerService.GetToken(request);
-            return Ok(response);
+            try
+            { 
+                var response = await _requestHandlerService.GetToken(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
+
+        /// <summary>
+        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("encryptionKey")]
+        public async Task<ActionResult> GenerateEncryptionKey()
+        {
+            try
+            {
+                var response = await _requestHandlerService.GenerateEncryptionKey();
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+            
+        }
+
+
     }
 }
