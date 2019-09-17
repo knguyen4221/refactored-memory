@@ -27,7 +27,7 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         [XmlIgnore]
         internal int _transactionId { get; set; }
         [XmlIgnore]
-        public IXmlRequestTranslatable _requestMessage { get; set; }
+        public RequestMessageBase _requestMessage { get; set; }
         #endregion
 
         #region Xml Object Representation
@@ -76,7 +76,7 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         /// <param name="_requestDateTime"></param>
         /// <param name="_requestType"></param>
         /// <param name="requestMessage"></param>
-        public BaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, IXmlRequestTranslatable requestMessage)
+        public BaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
         {
             _transactionId = transactionId;
             _requestDateTime = requestDateTime;

@@ -9,8 +9,8 @@ namespace XMLApiProject.Services.Services.Interfaces
     public interface IRequestHandlerRepository
     {
         Task<string> SendRequestAsync(string requestMessage);
-        Task<T2> SendRequestAsync<T2>(BaseRequest request);
-        Task<T> SendRequestAsync<T>(string requestMessage);
+        Task<T2> SendRequestAsync<T2>(string responseRootName, BaseRequest request);
+        Task<T> SendRequestAsync<T>(string responseRootName, string requestMessage);
         Task<string> SendRequestAsync(BaseRequest request);
 
     }

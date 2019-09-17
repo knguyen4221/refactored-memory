@@ -4,11 +4,16 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using XMLApiProject.Services.Models.PaymentService.Interfaces;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public abstract class RequestMessageBase
+    public abstract class RequestMessageBase: ICanGetResponseRootName, IXmlRequestTranslatable
     {
+        public abstract string GetResponseRootName();
+        public abstract RawRequestMessageString ToXmlRequestString();
+
+
         public virtual RawRequestMessageString ToXmlRequestString<T>()
         {
             var xmlSerializer = new XmlSerializer(typeof(T), "");
@@ -28,5 +33,6 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
                 return new RawRequestMessageString(stream.ToString());
             }
         }
+
     }
 }

@@ -6,10 +6,11 @@ using System.Xml;
 using System.Xml.Serialization;
 using XMLApiProject.Services.Models.PaymentService.Interfaces;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService
 {
-    public class MultiUseTokenRequest: RequestMessageBase, IXmlRequestTranslatable
+    public class MultiUseTokenRequest: RequestMessageBase
     {
 
         #region Constructor
@@ -20,7 +21,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService
         public MultiUseTokenRequest(string paymentAccountNumber, string expirationDate, string mSRKey, string secureFormat, int bDKSlot, string track1, 
             string track2, string track3, string encryptionId, string deviceMake, string deviceModel, string deviceSerial, 
             string deviceFirmware, string registrationKey, string appHostMachineId, string integrationMethod, string originatingTechnologySource, 
-            string softwareVendor, string securityTechnology, int securityCode)
+            string softwareVendor, string securityTechnology)
         {
             PaymentAccountNumber = paymentAccountNumber;
             ExpirationDate = expirationDate;
@@ -41,7 +42,6 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService
             OriginatingTechnologySource = originatingTechnologySource;
             SoftwareVendor = softwareVendor;
             SecurityTechnology = securityTechnology;
-            SecurityCode = securityCode;
         }
 
         #endregion
@@ -67,7 +67,12 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService
         public string SoftwareVendor { get; set; }
         public string SecurityTechnology { get; set; }
 
-        public RawRequestMessageString ToXmlRequestString()
+        public override string GetResponseRootName()
+        {
+            return nameof(GetToken);
+        }
+
+        public override RawRequestMessageString ToXmlRequestString()
         {
             return ToXmlRequestString<MultiUseTokenRequest>();
         }
