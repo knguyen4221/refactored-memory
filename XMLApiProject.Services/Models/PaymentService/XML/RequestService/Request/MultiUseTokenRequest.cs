@@ -4,11 +4,9 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using XMLApiProject.Services.Models.PaymentService.Interfaces;
-using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
-namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService
+namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
     public class MultiUseTokenRequest: RequestMessageBase
     {

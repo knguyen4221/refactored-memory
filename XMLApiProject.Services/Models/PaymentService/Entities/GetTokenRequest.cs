@@ -11,6 +11,5 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
     {
         public string PaymentAccountNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
-        public int SecurityCode { get; set; }
     }
 }
