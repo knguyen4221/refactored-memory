@@ -12,5 +12,7 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<Ping>> Ping();
         Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request);
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
+        Task<BaseResponse<Auth>> Capture(AuthorizationRequest request);
+        Task<BaseResponse<Auth>> Track(TrackRequest request);
     }
 }

@@ -42,10 +42,23 @@ namespace XMLApiProject.Services.Services
 
         public async Task<BaseResponse<Ping>> Ping()
         {
+            //Note: want to at some point generate the transactionIDs
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234567890, DateTime.Now, Utilities.Constants.RequestTypes.Ping, new PingRequest());
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Ping>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        
+        public async Task<BaseResponse<Auth>> Capture(AuthorizationRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
+                new Authorization(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        } 
+
+        public async Task<BaseResponse<Auth>> Track(TrackRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
+                new Authorization(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
     }
 }
