@@ -140,13 +140,14 @@ namespace XMLApiProject.Api.Controllers
         /// <summary>
         /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
         /// </summary>
+        /// <param name="purchaseToken"></param>
         /// <returns></returns>
-        [HttpPost("merchantInfo")]
-        public async Task<ActionResult> GetMerchantInfo([FromBody]GetMerchantRequest request)
+        [HttpGet("merchantInfo")]
+        public async Task<ActionResult> GetMerchantInfo(string purchaseToken)
         {
             try
             {
-                var response = await _requestHandlerService.GetMerchantInfo(request);
+                var response = await _requestHandlerService.GetMerchantInfo(purchaseToken);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)

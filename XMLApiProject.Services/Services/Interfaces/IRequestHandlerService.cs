@@ -14,7 +14,7 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
         Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
         Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
-        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(GetMerchantRequest request);
+        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(string purchaseToken);
         Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
     }
 }

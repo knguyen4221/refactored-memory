@@ -52,16 +52,15 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<UpdatePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<MerchantInfo>> GetMerchantInfo(GetMerchantRequest request)
+        public async Task<BaseResponse<MerchantInfo>> GetMerchantInfo(string purchaseToken)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo, new GetMerchantInfoRequest());
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo, new GetMerchantInfoRequest(purchaseToken));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<MerchantInfo>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(Models.PaymentService.Entities.VoidRefundRequest request)
+        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund,
-                new Models.PaymentService.XML.RequestService.Request.VoidOrRefundRequest());
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund, new VoidOrRefundRequest(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<VoidRefund>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 

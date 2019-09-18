@@ -6,7 +6,7 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
     public class UpdatePasswordRequest
     {
-        public string NewPassword;
-        public string ConfirmPassword;
+        public string NewPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }
