@@ -16,7 +16,7 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<Auth>> Track(TrackRequest request);
         Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
         Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
-        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(string purchaseToken);
+        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
         Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
     }
 }

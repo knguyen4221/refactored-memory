@@ -270,7 +270,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public bool ShouldSerializeSecurityCode()
         {
-            return WalletPaymentMethodID.HasValue;
+            return SecurityCode.HasValue;
         }
 
         public bool ShouldSerializeCashBackAmount()

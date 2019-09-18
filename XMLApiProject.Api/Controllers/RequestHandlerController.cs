@@ -183,7 +183,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="purchaseToken"></param>
         /// <returns></returns>
         [HttpGet("merchantInfo")]
-        public async Task<ActionResult> GetMerchantInfo(string purchaseToken)
+        public async Task<ActionResult> GetMerchantInfo(Guid? purchaseToken)
         {
             try
             {
