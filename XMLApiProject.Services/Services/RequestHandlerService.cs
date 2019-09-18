@@ -33,7 +33,6 @@ namespace XMLApiProject.Services.Services
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken,
                 new MultiUseTokenRequest()
                 {
-                    SecurityCode = request.SecurityCode,
                     PaymentAccountNumber = request.PaymentAccountNumber,
                     ExpirationDate = request.ExpirationDate.ToString("MMyy")
                 });
@@ -59,6 +58,26 @@ namespace XMLApiProject.Services.Services
             var baseRequest = _baseRequestFactory.CreateTrackBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
                 new Authorization(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+        public async Task<BaseResponse<BINLookup>> BINLookup(BINRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.BINLookup,
+                new BINLookupRequest()
+                {
+                    BIN = request.BIN
+                });
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<BINLookup>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
+        public async Task<BaseResponse<ChangePassword>> ChangePassword(NewPasswordRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.UpdatePassword,
+                new ChangePasswordRequest()
+                {
+                    NewPassword = request.NewPassword,
+                    ConfirmPassword = request.ConfirmPassword
+                });
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<ChangePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
     }
 }
