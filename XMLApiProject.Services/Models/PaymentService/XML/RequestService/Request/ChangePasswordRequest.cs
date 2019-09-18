@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
@@ -20,9 +21,15 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ConfirmPassword = confirmPassword;
         }
 
+        public ChangePasswordRequest(UpdatePasswordRequest request)
+        {
+            NewPassword = request.NewPassword;
+            ConfirmPassword = request.ConfirmPassword;
+        }
+
         public override string GetResponseRootName()
         {
-            return nameof(ChangePassword);
+            return nameof(UpdatePassword);
         }
 
         public override RawRequestMessageString ToXmlRequestString()

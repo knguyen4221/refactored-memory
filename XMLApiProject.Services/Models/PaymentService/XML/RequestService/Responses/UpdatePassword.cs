@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses
 {
-    public class ChangePassword
+    public class UpdatePassword
     {
     }
 }
