@@ -153,6 +153,26 @@ namespace XMLApiProject.Api.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPost("tokenizeAccount")]
+        public async Task<ActionResult> TokenizeAccount([FromBody] TokenizeAccountRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.TokenizeAccount(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+
         // Keeping this inaccessible for now to avoid development issues
         ///// <summary>
         ///// Sends a request to update the user's password

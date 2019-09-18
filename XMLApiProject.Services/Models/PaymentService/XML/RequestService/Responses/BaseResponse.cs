@@ -32,8 +32,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         {
             get
             {
-                var res = ((int)_requestType).ToString();
-                return String.Format("{0:000}", res);
+                return ((int)_requestType).ToString("D3");
             }
             set
             {
