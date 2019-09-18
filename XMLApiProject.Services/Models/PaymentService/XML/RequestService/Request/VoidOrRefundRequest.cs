@@ -9,6 +9,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class VoidOrRefundRequest: RequestMessageBase
     {
+        #region Properties
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
         [Required]
@@ -49,7 +50,9 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public string EMVTags { get; set; }
         [StringLength(20)]
         public string VoidReasonCode { get; set; }
+        #endregion
 
+        #region Constructors
         public VoidOrRefundRequest()
         {
         }
@@ -106,6 +109,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             EMVTags = request.EMVTags;
             VoidReasonCode = request.VoidReasonCode;
         }
+        #endregion
 
         public override string GetResponseRootName()
         {
