@@ -4,6 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
+    //TODO: Support for custom fields
     public class AuthorizationRequest
     {
         public uint? MerchantCode { get; set; }
