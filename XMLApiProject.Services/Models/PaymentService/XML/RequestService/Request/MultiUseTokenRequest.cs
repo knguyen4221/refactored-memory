@@ -6,6 +6,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class MultiUseTokenRequest: RequestMessageBase
     {
+        #region Properties
         [Required]
         [StringLength(16)]
         public string PaymentAccountNumber { get; set; }
@@ -36,6 +37,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         [Required]
         public string SoftwareVendor { get; set; }
         public string SecurityTechnology { get; set; }
+        #endregion
 
         #region Constructor
         public MultiUseTokenRequest()
