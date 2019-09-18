@@ -176,5 +176,52 @@ namespace XMLApiProject.Api.Controllers
         //        return StatusCode(500, ex);
         //    }
         //}
+
+        /// <summary>
+        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// </summary>
+        /// <param name="purchaseToken"></param>
+        /// <returns></returns>
+        [HttpGet("merchantInfo")]
+        public async Task<ActionResult> GetMerchantInfo(string purchaseToken)
+        {
+            try
+            {
+                var response = await _requestHandlerService.GetMerchantInfo(purchaseToken);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+
+        }
+
+        /// <summary>
+        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("voidRefund")]
+        public async Task<ActionResult> VoidOrRefund([FromBody]VoidRefundRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.VoidOrRefund(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+
+        }
     }
 }

@@ -30,12 +30,7 @@ namespace XMLApiProject.Services.Services
 
         public async Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken,
-                new MultiUseTokenRequest()
-                {
-                    PaymentAccountNumber = request.PaymentAccountNumber,
-                    ExpirationDate = request.ExpirationDate.ToString("MMyy")
-                });
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken, new MultiUseTokenRequest(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
@@ -61,23 +56,27 @@ namespace XMLApiProject.Services.Services
         }
         public async Task<BaseResponse<BINLookup>> BINLookup(BINRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.BINLookup,
-                new BINLookupRequest()
-                {
-                    BIN = request.BIN
-                });
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.BINLookup, new BINLookupRequest(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<BINLookup>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<ChangePassword>> ChangePassword(NewPasswordRequest request)
+        public async Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.UpdatePassword,
-                new ChangePasswordRequest()
-                {
-                    NewPassword = request.NewPassword,
-                    ConfirmPassword = request.ConfirmPassword
-                });
-            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<ChangePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.UpdatePassword, new ChangePasswordRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<UpdatePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        public async Task<BaseResponse<MerchantInfo>> GetMerchantInfo(string purchaseToken)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo, new GetMerchantInfoRequest(purchaseToken));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<MerchantInfo>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
+        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund, new VoidOrRefundRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<VoidRefund>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
     }
 }
