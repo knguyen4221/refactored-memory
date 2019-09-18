@@ -113,6 +113,46 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Public track request...One of the sampel operations
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("trackData")]
+        public async Task<ActionResult> TrackData([FromBody] TrackRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.Track(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost("capture")]
+        public async Task<ActionResult> Capture([FromBody] AuthorizationRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.Capture(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
         // Keeping this inaccessible for now to avoid development issues
         ///// <summary>
         ///// Sends a request to update the user's password

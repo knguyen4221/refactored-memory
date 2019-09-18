@@ -26,5 +26,25 @@ namespace XMLApiProject.Services.Services.Factories
             };
             return baseRequest;
         }
+
+        BaseRequest IHasBaseRequest.CreateAuthorizeBaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        {
+            var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage)
+            {
+                User = "dhaaspgtest1",
+                Password = _configuration.GetSection("Credentials")["password"]
+            };
+            return baseRequest;
+        }
+
+        public BaseRequest CreateTrackBaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        {
+            var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage)
+            {
+                User = "bpntest",
+                Password = _configuration.GetSection("Credentials")["password"]
+            };
+            return baseRequest;
+        }
     }
 }
