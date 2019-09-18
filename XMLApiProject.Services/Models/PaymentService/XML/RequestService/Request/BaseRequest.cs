@@ -33,19 +33,19 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         #region Xml Object Representation
         public string ClientIdentifier { get; set; } = "SOAP";
         public string TransactionId { get { return _transactionId.ToString(); } set { _transactionId = int.Parse(value); } }
-        public string RequestType {
-            get {
+        public string RequestType
+        {
+            get
+            {
                 var res = ((int)_requestType).ToString();
-                while (res.Length != _requestTypeLength)
-                {
-                    res = "0" + res;
-                }
-                return res;
+                return String.Format("{0:000}", res);
             }
-            set {
-                _requestType = (RequestTypes)(int.Parse(value));
+            set
+            {
+                _requestType = (RequestTypes)int.Parse(value);
             }
         }
+
         public string RequestDateTime {
             get
             {
