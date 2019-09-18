@@ -6,10 +6,10 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
 {
     public class VoidRefund
     {
-        public int ReferenceNumber { get; set; }
+        public string ReferenceNumber { get; set; }
         public string TransactionCode { get; set; }
-        public int RemainingAmount { get; set; }
-        public int MerchantAccountCode { get; set; }
+        public uint RemainingAmount { get; set; }
+        public string MerchantAccountCode { get; set; }
         public string CardType { get; set; }
     }
 }

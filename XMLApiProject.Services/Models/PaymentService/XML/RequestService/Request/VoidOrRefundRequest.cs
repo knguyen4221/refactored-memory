@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
     public class VoidOrRefundRequest: RequestMessageBase
     {
-        public int MerchantCode { get; set; }
-        public int MerchantAccountCode { get; set; }
-        public int Amount { get; set; }
-        public int ReferenceNumber { get; set; }
+        public string MerchantCode { get; set; }
+        public string MerchantAccountCode { get; set; }
+        public uint Amount { get; set; }
+        public string ReferenceNumber { get; set; }
         public string TransactionType { get; set; }
         public string TransactionCode { get; set; }
         public string PurchaseToken { get; set; }
@@ -32,7 +33,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         {
         }
 
-        public VoidOrRefundRequest(int merchantCode, int merchantAccountCode, int amount, int referenceNumber, string transactionType, string transactionCode,
+        public VoidOrRefundRequest(string merchantCode, string merchantAccountCode, uint amount, string referenceNumber, string transactionType, string transactionCode,
             string purchaseToken, string originatingTechnologySource, string softwareVendor, string securityTechnology, string customerAccountCode,
             string deviceMake, string deviceModel, string deviceSerial, string deviceFirmware, string registrationKey, string appHostMachineId, string integrationMethod,
             string emvTags, string voidReasonCode)
@@ -57,6 +58,17 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             IntegrationMethod = integrationMethod;
             EMVTags = emvTags;
             VoidReasonCode = voidReasonCode;
+        }
+
+        public VoidOrRefundRequest(VoidRefundRequest request)
+        {
+            MerchantCode = request.MerchantCode;
+            MerchantAccountCode = request.MerchantAccountCode;
+            Amount = request.Amount;
+            ReferenceNumber = request.ReferenceNumber;
+            TransactionType = request.TransactionType;
+            TransactionCode = request.TransactionCode;
+            SoftwareVendor = request.SoftwareVendor;
         }
 
         public override string GetResponseRootName()

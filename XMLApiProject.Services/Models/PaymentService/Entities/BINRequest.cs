@@ -6,6 +6,6 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
     public class BINRequest
     {
-        public int BIN;
+        public string BIN;
     }
 }

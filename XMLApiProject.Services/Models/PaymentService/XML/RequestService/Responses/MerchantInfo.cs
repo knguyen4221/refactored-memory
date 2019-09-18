@@ -7,11 +7,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
     //May need to change this to GetMerchantInfo instead because of response name typo in documentation
     public class MerchantInfo
     {
-        public int MerchantCode { get; set; }
-        public int MerchantAccountCode { get; set; }
+        public string MerchantCode { get; set; }
+        public string MerchantAccountCode { get; set; }
         public string MerchantName { get; set; }
         public string GatewayResults { get; set; }
-        public int GatewayTransID { get; set; }
+        public string GatewayTransID { get; set; }
         public string GatewayMessage { get; set; }
     }
 }
