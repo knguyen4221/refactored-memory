@@ -60,7 +60,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public VoidOrRefundRequest(string merchantCode, string merchantAccountCode, uint amount, string referenceNumber, string transactionType, string transactionCode,
             Guid? purchaseToken, string originatingTechnologySource, string softwareVendor, string securityTechnology, string customerAccountCode, string invoiceNum,
             string deviceMake, string deviceModel, string deviceSerial, string deviceFirmware, string registrationKey, string appHostMachineId, string integrationMethod,
-            string eMVTags, string voidReasonCode)
+            string emvTags, string voidReasonCode)
         {
             MerchantCode = merchantCode;
             MerchantAccountCode = merchantAccountCode;
@@ -81,7 +81,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             RegistrationKey = registrationKey;
             AppHostMachineId = appHostMachineId;
             IntegrationMethod = integrationMethod;
-            EMVTags = eMVTags;
+            EMVTags = emvTags;
             VoidReasonCode = voidReasonCode;
         }
 
