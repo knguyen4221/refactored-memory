@@ -9,7 +9,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         #region Properties
         public string Token { get; set; }
         public string AuthorizationCode { get; set; }
-        public string ReferenceNUmber { get; set; }
+        public string ReferenceNumber { get; set; }
         public string GatewayResult { get; set; }
         public uint AuthorizedAmount { get; set; }
         public uint OriginalAmount { get; set; }

@@ -49,14 +49,14 @@ namespace XMLApiProject.Services.Services
 
         public async Task<BaseResponse<Auth>> Capture(AuthorizationRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
+            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
                 new Authorization(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 
         public async Task<BaseResponse<Auth>> Track(TrackRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
+            var baseRequest = _baseRequestFactory.CreateTrackBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
                 new Authorization(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
