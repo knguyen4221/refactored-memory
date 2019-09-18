@@ -22,7 +22,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override string GetResponseRootName()
         {
-            return nameof(ChangePassword);
+            return nameof(UpdatePassword);
         }
 
         public override RawRequestMessageString ToXmlRequestString()

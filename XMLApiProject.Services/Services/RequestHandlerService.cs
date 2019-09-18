@@ -55,7 +55,7 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<BINLookup>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<ChangePassword>> ChangePassword(NewPasswordRequest request)
+        public async Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.UpdatePassword,
                 new ChangePasswordRequest()
@@ -63,7 +63,30 @@ namespace XMLApiProject.Services.Services
                     NewPassword = request.NewPassword,
                     ConfirmPassword = request.ConfirmPassword
                 });
-            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<ChangePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<UpdatePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        public async Task<BaseResponse<MerchantInfo>> GetMerchantInfo(GetMerchantRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo, new GetMerchantInfoRequest());
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<MerchantInfo>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
+        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund,
+                new VoidOrRefundRequest()
+                {
+                    MerchantCode = request.MerchantCode,
+                    MerchantAccountCode = request.MerchantAccountCode,
+                    Amount = request.Amount,
+                    ReferenceNumber = request.ReferenceNumber,
+                    TransactionType = request.TransactionType,
+                    TransactionCode = request.TransactionCode,
+                    SoftwareVendor = request.SoftwareVendor
+                });
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<VoidRefund>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
     }
 }

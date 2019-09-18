@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class NewPasswordRequest
+    public class UpdatePasswordRequest
     {
         public string NewPassword;
         public string ConfirmPassword;
