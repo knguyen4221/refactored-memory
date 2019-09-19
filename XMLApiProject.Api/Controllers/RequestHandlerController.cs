@@ -118,7 +118,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("trackData")]
+        [HttpPost("authorize/trackData")]
         public async Task<ActionResult> TrackData([FromBody] TrackRequest request)
         {
             try
@@ -136,7 +136,7 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
-        [HttpPost("capture")]
+        [HttpPost("authorize/capture")]
         public async Task<ActionResult> Capture([FromBody] AuthorizationRequest request)
         {
             try
@@ -294,6 +294,24 @@ namespace XMLApiProject.Api.Controllers
             try
             {
                 var response = await _requestHandlerService.FindTransaction(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost("capture")]
+        public async Task<ActionResult> CaptureRequest([FromBody]CaptureRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.Capture(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)

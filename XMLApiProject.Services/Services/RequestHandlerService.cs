@@ -22,6 +22,7 @@ namespace XMLApiProject.Services.Services
             _requestHandlerRepository = requestHandlerRepository;
         }
 
+        //Note: Hits the endpoint but can't generate a key for some reason on their side.
         public async Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey()
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(12345, DateTime.Now, Utilities.Constants.RequestTypes.EncryptionKey, new GenerateEncryptionKey());
@@ -30,8 +31,9 @@ namespace XMLApiProject.Services.Services
 
         public async Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken, new MultiUseTokenRequest(request));
-            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken, new MultiUseTokenRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(),
+                baseRequest);
         }
 
         public async Task<BaseResponse<Ping>> Ping()
@@ -87,15 +89,24 @@ namespace XMLApiProject.Services.Services
 
         //Note: Doesn't work with our credentials
         //Note: returns merchant service lookup unavailable
-        //Note: Not sure if this endpoint will even be leveraged HMMM
+        //Note: Not sure if this endpoint will even be leveraged
         public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
                 new BalanceInquiry(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<AccountInquiry>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        //Note: Able to hit the endpoint, but can't uniquely hit them....
+        public async Task<BaseResponse<Models.PaymentService.XML.RequestService.Responses.Capture>> Capture(CaptureRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(123456, DateTime.Now, Utilities.Constants.RequestTypes.Capture,
+                new Models.PaymentService.XML.RequestService.Request.Capture(request, 123456));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Models.PaymentService.XML.RequestService.Responses.Capture>>(
+                baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
 	
-	    public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
+	      public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.InitiateSettlement, new InitiateSettlementRequest(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<CloseCycle>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
