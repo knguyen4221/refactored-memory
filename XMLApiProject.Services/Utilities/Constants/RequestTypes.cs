@@ -18,5 +18,6 @@ namespace XMLApiProject.Services.Utilities.Constants
         InitiateSettlement = 020,
         Ping = 099,
         AccountInquiry = 015,
+        TokenizeAccount = 013
     }
 }
