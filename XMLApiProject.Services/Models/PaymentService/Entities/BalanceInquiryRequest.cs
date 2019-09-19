@@ -11,7 +11,8 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
         public string HolderType { get; set; }
         public string TransIndustryType { get; set; }
         public DateTime TransactionDate { get; set; }
-        public uint MerchantAccountCode { get; set; }
-        public uint MerchantCode { get; set; }
+        public string MerchantAccountCode { get; set; }
+        public string MerchantCode { get; set; }
+        public string AccountHolderName { get; set; }
     }
 }

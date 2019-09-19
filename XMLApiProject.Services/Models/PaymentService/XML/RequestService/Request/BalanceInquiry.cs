@@ -47,10 +47,13 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public string TransactionDate { get; set; }
 
         [Required]
-        public uint MerchantAccountCode { get; set; }
+        public string MerchantAccountCode { get; set; }
 
         [Required]
-        public uint MerchantCode { get; set; }
+        public string MerchantCode { get; set; }
+
+        [StringLength(150)]
+        public string AccountHolderName { get; set; }
 
         [StringLength(10)]
         public string LaneCode { get; set; }
