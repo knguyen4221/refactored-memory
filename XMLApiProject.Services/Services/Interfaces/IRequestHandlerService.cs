@@ -19,5 +19,6 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
         Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
         Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
+        Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request);
     }
 }

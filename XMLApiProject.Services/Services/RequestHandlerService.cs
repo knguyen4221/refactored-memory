@@ -84,5 +84,15 @@ namespace XMLApiProject.Services.Services
                 new TokenizeAccount(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        //Note: Doesn't work with our credentials
+        //Note: returns merchant service lookup unavailable
+        //Note: Not sure if this endpoint will even be leveraged HMMM
+        public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
+                new BalanceInquiry(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<AccountInquiry>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
     }
 }
