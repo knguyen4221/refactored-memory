@@ -105,5 +105,17 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Models.PaymentService.XML.RequestService.Responses.Capture>>(
                 baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+	
+	      public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.InitiateSettlement, new InitiateSettlementRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<CloseCycle>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+
+        public async Task<BaseResponse<Find>> FindTransaction(FindTransaction request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.FindTransaction, new FindTransactionRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Find>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
     }
 }

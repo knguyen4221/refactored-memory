@@ -238,7 +238,6 @@ namespace XMLApiProject.Api.Controllers
             {
                 return StatusCode(500, ex);
             }
-
         }
 
         /// <summary>
@@ -261,7 +260,50 @@ namespace XMLApiProject.Api.Controllers
             {
                 return StatusCode(500, ex);
             }
+        }
 
+        /// <summary>
+        /// Sends a request to initiate a settlement
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("initiateSettlement")]
+        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlement request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.InitiateSettlement(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        /// <summary>
+        /// Sends a request to find a transaction
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("findTransaction")]
+        public async Task<ActionResult> FindTransaction([FromBody]FindTransaction request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.FindTransaction(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpPost("capture")]
