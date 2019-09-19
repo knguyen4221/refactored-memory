@@ -17,7 +17,7 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
         Task<BaseResponse<GetToken>> TokenizeAccount(TokenizeAccountRequest request);
         Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
-        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(string purchaseToken);
+        Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
         Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
         Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request);
     }

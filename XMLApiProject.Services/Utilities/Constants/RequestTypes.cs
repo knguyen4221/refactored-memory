@@ -13,10 +13,12 @@ namespace XMLApiProject.Services.Utilities.Constants
         UpdatePassword = 007,
         GetMerchantInfo = 011,
         VoidOrRefund = 012,
+        TokenizeAccount = 013,
         ManageGiftCard = 014,
+        AccountInquiry = 015,
         Capture = 019,
         InitiateSettlement = 020,
-        Ping = 099,
-        TokenizeAccount = 013
+        FindTransaction = 023,
+        Ping = 099
     }
 }

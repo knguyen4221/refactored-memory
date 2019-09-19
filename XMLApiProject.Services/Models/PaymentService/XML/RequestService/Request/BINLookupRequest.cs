@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
@@ -8,6 +6,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class BINLookupRequest: RequestMessageBase
     {
+        [StringLength(11)]
         public string BIN { get; set; }
 
         public BINLookupRequest()
