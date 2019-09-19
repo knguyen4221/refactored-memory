@@ -20,5 +20,6 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
         Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
         Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request);
+        Task<BaseResponse<Find>> FindTransaction(FindTransaction request);
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class FindTransactionRequest
+    public class FindTransaction
     {
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }

@@ -11,7 +11,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         public string MerchantAccountCode { get; set; }
         public string MerchantName { get; set; }
         public string GatewayResults { get; set; }
-        public string GatewayTransID { get; set; }
+        public uint GatewayTransID { get; set; }
         public string GatewayMessage { get; set; }
     }
 }

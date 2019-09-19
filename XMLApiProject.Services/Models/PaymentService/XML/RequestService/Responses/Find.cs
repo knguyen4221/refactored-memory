@@ -9,7 +9,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
         public string RoutingNumber { get; set; }
-        public Guid PurchaseToken { get; set; }
+        public String PurchaseToken { get; set; }
         public string ApprovalCode { get; set; }
         public string CSCResponseCode { get; set; }
         public uint GatewayTransId { get; set; }

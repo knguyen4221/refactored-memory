@@ -218,7 +218,6 @@ namespace XMLApiProject.Api.Controllers
             {
                 return StatusCode(500, ex);
             }
-
         }
 
         /// <summary>
@@ -241,7 +240,6 @@ namespace XMLApiProject.Api.Controllers
             {
                 return StatusCode(500, ex);
             }
-
         }
 
         /// <summary>
@@ -264,7 +262,28 @@ namespace XMLApiProject.Api.Controllers
             {
                 return StatusCode(500, ex);
             }
+        }
 
+        /// <summary>
+        /// Sends a request to find a transaction
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("findTransaction")]
+        public async Task<ActionResult> FindTransaction([FromBody]FindTransaction request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.FindTransaction(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
     }
 }
