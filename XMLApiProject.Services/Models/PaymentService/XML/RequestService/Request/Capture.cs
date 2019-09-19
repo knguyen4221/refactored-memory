@@ -76,5 +76,10 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             return ToXmlRequestString<Capture>();
         }
 
+        public bool ShouldSerializeSettlementDelay()
+        {
+            return SettlementDelay.HasValue;
+        }
+
     }
 }
