@@ -16,5 +16,6 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<Auth>> Track(TrackRequest request);
         Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
         Task<BaseResponse<ChangePassword>> ChangePassword(NewPasswordRequest request);
+        Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request);
     }
 }

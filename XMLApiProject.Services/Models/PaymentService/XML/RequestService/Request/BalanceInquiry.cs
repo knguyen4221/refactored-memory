@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml.Serialization;
 using XMLApiProject.Services.Models.PaymentService.Entities;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
@@ -85,12 +86,18 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public BalanceInquiry(BalanceInquiryRequest request)
         {
             PaymentAccountNumber = request.PaymentAccountNumber;
-            ExpirationDate = 
+            ExpirationDate = request.ExpirationDate.ToString("MMyy");
+            TransIndustryType = request.TransIndustryType;
+            HolderType = request.HolderType;
+            TransactionDate = request.TransactionDate.ToString("yyyyMMddHHmmss");
+            MerchantAccountCode = request.MerchantAccountCode;
+            MerchantCode = request.MerchantCode;
         }
 
         public override string GetResponseRootName()
         {
-            throw new NotImplementedException();
+            return nameof(AccountInquiry);
+
         }
 
         public override RawRequestMessageString ToXmlRequestString()

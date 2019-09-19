@@ -159,7 +159,8 @@ namespace XMLApiProject.Api.Controllers
         {
             try
             {
-                return Ok();
+                var response = await _requestHandlerService.BalanceInquiry(request);
+                return Ok(response);
             }
             catch (SoapEndpointException ex)
             {

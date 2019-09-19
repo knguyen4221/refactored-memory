@@ -79,5 +79,12 @@ namespace XMLApiProject.Services.Services
                 });
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<ChangePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
+                new BalanceInquiry(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<AccountInquiry>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
     }
 }

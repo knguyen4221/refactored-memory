@@ -16,6 +16,7 @@ namespace XMLApiProject.Services.Utilities.Constants
         ManageGiftCard = 014,
         Capture = 019,
         InitiateSettlement = 020,
-        Ping = 099
+        Ping = 099,
+        AccountInquiry = 015,
     }
 }
