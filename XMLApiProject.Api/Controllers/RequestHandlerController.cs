@@ -173,6 +173,26 @@ namespace XMLApiProject.Api.Controllers
         }
 
 
+
+        [HttpPost("balanceInquiry")]
+        public async Task<ActionResult> BalanceInquiry([FromBody] BalanceInquiryRequest request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.BalanceInquiry(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+
         // Keeping this inaccessible for now to avoid development issues
         ///// <summary>
         ///// Sends a request to update the user's password

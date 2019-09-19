@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using XMLApiProject.Services.Models.PaymentService.Interfaces;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 using XMLApiProject.Services.Models.XML.RequestService.Request;
 using XMLApiProject.Services.Utilities.Constants;
 

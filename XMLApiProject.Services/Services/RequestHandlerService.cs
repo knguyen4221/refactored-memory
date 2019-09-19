@@ -85,7 +85,17 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
+        //Note: Doesn't work with our credentials
+        //Note: returns merchant service lookup unavailable
+        //Note: Not sure if this endpoint will even be leveraged HMMM
+        public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request)
+        {
+            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
+                new BalanceInquiry(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<AccountInquiry>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
+	
+	    public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.InitiateSettlement, new InitiateSettlementRequest(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<CloseCycle>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
