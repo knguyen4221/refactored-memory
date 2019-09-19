@@ -84,5 +84,11 @@ namespace XMLApiProject.Services.Services
                 new TokenizeAccount(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
+
+        public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request)
+        {
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.InitiateSettlement, new InitiateSettlementRequest(request));
+            return await _requestHandlerRepository.SendRequestAsync<BaseResponse<CloseCycle>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
+        }
     }
 }

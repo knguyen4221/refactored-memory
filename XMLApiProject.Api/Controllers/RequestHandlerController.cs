@@ -243,5 +243,28 @@ namespace XMLApiProject.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Sends a request to initiate a settlement
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("initiateSettlement")]
+        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlement request)
+        {
+            try
+            {
+                var response = await _requestHandlerService.InitiateSettlement(request);
+                return Ok(response);
+            }
+            catch (SoapEndpointException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+
+        }
     }
 }
