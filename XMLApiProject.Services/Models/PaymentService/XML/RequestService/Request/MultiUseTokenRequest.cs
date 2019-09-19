@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
@@ -11,25 +6,38 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class MultiUseTokenRequest: RequestMessageBase
     {
+        #region Properties
+        [Required]
+        [StringLength(16)]
         public string PaymentAccountNumber { get; set; }
+        [StringLength(7)]
         public string ExpirationDate { get; set; }
         public string MSRKey { get; set; }
         public string SecureFormat { get; set; }
-        public uint BDKSlot { get; set; }
+        public uint? BDKSlot { get; set; }
         public string Track1 { get; set; }
         public string Track2 { get; set; }
         public string Track3 { get; set; }
         public string EncryptionId { get; set; }
+        [StringLength(40)]
         public string DeviceMake { get; set; }
+        [StringLength(40)]
         public string DeviceModel { get; set; }
+        [StringLength(40)]
         public string DeviceSerial { get; set; }
+        [StringLength(50)]
         public string DeviceFirmware { get; set; }
+        [StringLength(10)]
         public string RegistrationKey { get; set; }
+        [StringLength(36)]
         public string AppHostMachineId { get; set; }
+        [StringLength(6)]
         public string IntegrationMethod { get; set; }
         public string OriginatingTechnologySource { get; set; }
+        [Required]
         public string SoftwareVendor { get; set; }
         public string SecurityTechnology { get; set; }
+        #endregion
 
         #region Constructor
         public MultiUseTokenRequest()
@@ -67,6 +75,23 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             {
                 PaymentAccountNumber = request.PaymentAccountNumber;
                 ExpirationDate = request.ExpirationDate.ToString("MMyy");
+                MSRKey = request.MSRKey;
+                SecureFormat = request.SecureFormat;
+                BDKSlot = request.BDKSlot;
+                Track1 = request.Track1;
+                Track2 = request.Track2;
+                Track3 = request.Track3;
+                EncryptionId = request.EncryptionId;
+                DeviceMake = request.DeviceMake;
+                DeviceModel = request.DeviceModel;
+                DeviceSerial = request.DeviceSerial;
+                DeviceFirmware = request.DeviceFirmware;
+                RegistrationKey = request.RegistrationKey;
+                AppHostMachineId = request.AppHostMachineId;
+                IntegrationMethod = request.IntegrationMethod;
+                OriginatingTechnologySource = request.OriginatingTechnologySource;
+                SoftwareVendor = request.SoftwareVendor;
+                SecurityTechnology = request.SecurityTechnology;
             }
         }
         #endregion
@@ -79,6 +104,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public override RawRequestMessageString ToXmlRequestString()
         {
             return ToXmlRequestString<MultiUseTokenRequest>();
+        }
+
+        public bool ShouldSerializeBDKSlot()
+        {
+            return BDKSlot.HasValue;
         }
     }
 }
