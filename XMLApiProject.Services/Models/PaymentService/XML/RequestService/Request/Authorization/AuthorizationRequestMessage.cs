@@ -7,7 +7,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class Authorization: RequestMessageBase
+    public class AuthorizationRequestMessage: RequestMessageBase
     {
 
         #region Properties
@@ -125,7 +125,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public string ShipToState { get; set; }
         public uint? ItemCount { get; set; }
         [XmlElement]
-        public List<Item> Item { get; set; }
+        public List<ItemRequestMessage> Item { get; set; }
         #endregion
 
         [StringLength(64000)]
@@ -179,7 +179,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         #region Constructors
 
-        public Authorization() { }
+        public AuthorizationRequestMessage() { }
 
         /// <summary>
         /// This is a constructor for all types that are marked as required. Any other optional types should be directly set via initialization list
@@ -192,7 +192,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         /// <param name="amount">Amount request for authorization</param>
         /// <param name="expirationDate">Expiry date of the card of the format MMyy or MM/yy</param>
         /// <param name="softwareVendor"></param>
-        public Authorization(string paymentAccountNumber, string transactionType, string transIndustryType, string acctType, string holderType, 
+        public AuthorizationRequestMessage(string paymentAccountNumber, string transactionType, string transIndustryType, string acctType, string holderType, 
             string softwareVendor, uint amount, string expirationDate)
         {
             PaymentAccountNumber = paymentAccountNumber;
@@ -205,7 +205,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ExpirationDate = expirationDate;
         }
 
-        public Authorization(AuthorizationRequest authorizationRequest)
+        public AuthorizationRequestMessage(AuthorizationRequest authorizationRequest)
         {
             //Missing custom fields for now
             MerchantCode = authorizationRequest.MerchantCode;
@@ -227,7 +227,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             AccountZip = authorizationRequest.AccountZip;
         }
 
-        public Authorization(TrackRequest trackRequest)
+        public AuthorizationRequestMessage(TrackRequest trackRequest)
         {
             MerchantCode = trackRequest.MerchantCode;
             MerchantAccountCode = trackRequest.MerchantAccountCode;
@@ -255,7 +255,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<Authorization>();
+            return ToXmlRequestString<AuthorizationRequestMessage>();
         }
 
         public bool ShouldSerializePurchaseToken()

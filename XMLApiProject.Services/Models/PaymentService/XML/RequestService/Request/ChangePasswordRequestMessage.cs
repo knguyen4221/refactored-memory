@@ -6,22 +6,22 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class ChangePasswordRequest : RequestMessageBase
+    public class ChangePasswordRequestMessage : RequestMessageBase
     {
         public string NewPassword { get; set; }
         public string ConfirmPassword { get; set; }
 
-        public ChangePasswordRequest()
+        public ChangePasswordRequestMessage()
         {
         }
 
-        public ChangePasswordRequest(string newPassword, string confirmPassword)
+        public ChangePasswordRequestMessage(string newPassword, string confirmPassword)
         {
             NewPassword = newPassword;
             ConfirmPassword = confirmPassword;
         }
 
-        public ChangePasswordRequest(UpdatePasswordRequest request)
+        public ChangePasswordRequestMessage(UpdatePasswordRequest request)
         {
             NewPassword = request.NewPassword;
             ConfirmPassword = request.ConfirmPassword;
@@ -34,7 +34,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<ChangePasswordRequest>();
+            return ToXmlRequestString<ChangePasswordRequestMessage>();
         }
     }
 }

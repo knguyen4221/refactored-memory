@@ -6,23 +6,23 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class InitiateSettlementRequest: RequestMessageBase
+    public class InitiateSettlementRequestMessage: RequestMessageBase
     {
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
 
-        public InitiateSettlementRequest()
+        public InitiateSettlementRequestMessage()
         {
 
         }
 
-        public InitiateSettlementRequest(string merchantCode, string merchantAccountCode)
+        public InitiateSettlementRequestMessage(string merchantCode, string merchantAccountCode)
         {
             MerchantCode = merchantCode;
             MerchantAccountCode = merchantAccountCode;
         }
 
-        public InitiateSettlementRequest(InitiateSettlement request)
+        public InitiateSettlementRequestMessage(InitiateSettlementRequest request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;
@@ -35,7 +35,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<InitiateSettlementRequest>();
+            return ToXmlRequestString<InitiateSettlementRequestMessage>();
         }
     }
 }

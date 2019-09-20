@@ -267,7 +267,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("initiateSettlement")]
-        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlement request)
+        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlementRequest request)
         {
             try
             {
@@ -289,7 +289,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("findTransaction")]
-        public async Task<ActionResult> FindTransaction([FromBody]FindTransaction request)
+        public async Task<ActionResult> FindTransaction([FromBody]FindTransactionRequest request)
         {
             try
             {

@@ -24,12 +24,12 @@ namespace XMLApiProject
 
         static async Task MainAsync()
         {
-            var testRequest = new MultiUseTokenRequest
+            var testRequest = new MultiUseTokenRequestMessage
             {
                 PaymentAccountNumber = "4111111111111111",
                 ExpirationDate = "1222",
             };
-            var testRequest2 = new PingRequest();
+            var testRequest2 = new PingRequestMessage();
             var nameSpaces = new XmlSerializerNamespaces();
             nameSpaces.Add("", "");
             var request = new BaseRequest(12345678, DateTime.Now, Services.Utilities.Constants.RequestTypes.MultiUseToken, testRequest)

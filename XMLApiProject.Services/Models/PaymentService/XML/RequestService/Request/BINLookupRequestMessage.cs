@@ -4,21 +4,21 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class BINLookupRequest: RequestMessageBase
+    public class BINLookupRequestMessage: RequestMessageBase
     {
         [StringLength(11)]
         public string BIN { get; set; }
 
-        public BINLookupRequest()
+        public BINLookupRequestMessage()
         {
         }
 
-        public BINLookupRequest(string bin)
+        public BINLookupRequestMessage(string bin)
         {
             BIN = bin;
         }
 
-        public BINLookupRequest(BINRequest request)
+        public BINLookupRequestMessage(BINRequest request)
         {
             BIN = request.BIN;
         }
@@ -30,7 +30,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<BINLookupRequest>();
+            return ToXmlRequestString<BINLookupRequestMessage>();
         }
     }
 }
