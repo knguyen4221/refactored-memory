@@ -8,6 +8,17 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class GenerateEncryptionKeyRequestMessage : RequestMessageBase
     {
+
+        public string MerchantAccountCode { get; set; }
+        public string MerchantCode { get; set; }
+
+        public GenerateEncryptionKeyRequestMessage() { }
+        public GenerateEncryptionKeyRequestMessage(string merchantAccountCode, string merchantCode)
+        {
+            MerchantAccountCode = merchantAccountCode;
+            MerchantCode = merchantCode;
+        }
+
         public override string GetResponseRootName()
         {
             return nameof(EncryptionKey);
@@ -15,7 +26,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return new RawRequestMessageString(string.Empty);
+            return ToXmlRequestString<GenerateEncryptionKeyRequestMessage>();
         }
     }
 }

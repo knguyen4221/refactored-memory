@@ -44,7 +44,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         #endregion
 
 
-        public CaptureRequestMessage(ICaptureRequest request, int transactionCode)
+        public CaptureRequestMessage(ICaptureRequest request, Guid transactionCode)
         {
             MerchantAccountCode = request.MerchantAccountCode;
             MerchantCode = request.MerchantCode;
@@ -61,7 +61,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             IntegrationMethod = request.IntegrationMethod;
             RegistrationKey = request.RegistrationKey;
             ReferenceNumber = request.ReferenceNumber;
-            this.TransactionCode = transactionCode.ToString();
+            TransactionCode = transactionCode.ToString();
         }
 
         public CaptureRequestMessage() { }
