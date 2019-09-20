@@ -7,7 +7,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class VoidOrRefundRequest: RequestMessageBase
+    public class VoidOrRefundRequestMessage: RequestMessageBase
     {
         #region Properties
         public string MerchantCode { get; set; }
@@ -53,11 +53,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         #endregion
 
         #region Constructors
-        public VoidOrRefundRequest()
+        public VoidOrRefundRequestMessage()
         {
         }
 
-        public VoidOrRefundRequest(string merchantCode, string merchantAccountCode, uint amount, string referenceNumber, string transactionType, string transactionCode,
+        public VoidOrRefundRequestMessage(string merchantCode, string merchantAccountCode, uint amount, string referenceNumber, string transactionType, string transactionCode,
             Guid? purchaseToken, string originatingTechnologySource, string softwareVendor, string securityTechnology, string customerAccountCode, string invoiceNum,
             string deviceMake, string deviceModel, string deviceSerial, string deviceFirmware, string registrationKey, string appHostMachineId, string integrationMethod,
             string emvTags, string voidReasonCode)
@@ -85,7 +85,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             VoidReasonCode = voidReasonCode;
         }
 
-        public VoidOrRefundRequest(VoidRefundRequest request)
+        public VoidOrRefundRequestMessage(VoidRefundRequest request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;
@@ -118,7 +118,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<VoidOrRefundRequest>();
+            return ToXmlRequestString<VoidOrRefundRequestMessage>();
         }
 
         public bool ShouldSerializePurchaseToken()

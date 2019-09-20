@@ -4,7 +4,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class MultiUseTokenRequest: RequestMessageBase
+    public class MultiUseTokenRequestMessage: RequestMessageBase
     {
         #region Properties
         [Required]
@@ -40,11 +40,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         #endregion
 
         #region Constructor
-        public MultiUseTokenRequest()
+        public MultiUseTokenRequestMessage()
         {
         }
 
-        public MultiUseTokenRequest(string paymentAccountNumber, string expirationDate, string mSRKey, string secureFormat, uint bDKSlot, string track1, 
+        public MultiUseTokenRequestMessage(string paymentAccountNumber, string expirationDate, string mSRKey, string secureFormat, uint bDKSlot, string track1, 
             string track2, string track3, string encryptionId, string deviceMake, string deviceModel, string deviceSerial, 
             string deviceFirmware, string registrationKey, string appHostMachineId, string integrationMethod, string originatingTechnologySource, 
             string softwareVendor, string securityTechnology)
@@ -70,7 +70,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             SecurityTechnology = securityTechnology;
         }
 
-        public MultiUseTokenRequest(GetTokenRequest request)
+        public MultiUseTokenRequestMessage(GetTokenRequest request)
         {
             {
                 PaymentAccountNumber = request.PaymentAccountNumber;
@@ -103,7 +103,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<MultiUseTokenRequest>();
+            return ToXmlRequestString<MultiUseTokenRequestMessage>();
         }
 
         public bool ShouldSerializeBDKSlot()

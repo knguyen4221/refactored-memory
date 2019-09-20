@@ -9,7 +9,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class BalanceInquiry : RequestMessageBase
+    public class BalanceInquiryRequestMessage : RequestMessageBase
     {
 
         #region Properties
@@ -86,9 +86,9 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         #endregion
 
-        public BalanceInquiry() { }
+        public BalanceInquiryRequestMessage() { }
 
-        public BalanceInquiry(BalanceInquiryRequest request)
+        public BalanceInquiryRequestMessage(BalanceInquiryRequest request)
         {
             PaymentAccountNumber = request.PaymentAccountNumber;
             ExpirationDate = request.ExpirationDate.ToString("MMyy");
@@ -107,7 +107,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<BalanceInquiry>();
+            return ToXmlRequestString<BalanceInquiryRequestMessage>();
         }
     }
 }

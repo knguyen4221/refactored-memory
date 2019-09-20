@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class InitiateSettlement
+    public class InitiateSettlementRequest
     {
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }

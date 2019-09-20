@@ -4,7 +4,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class FindTransactionRequest : RequestMessageBase
+    public class FindTransactionRequestMessage : RequestMessageBase
     {
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
@@ -13,11 +13,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public Guid? PurchaseToken { get; set; }
         public string InvoiceNum { get; set; }
 
-        public FindTransactionRequest()
+        public FindTransactionRequestMessage()
         {
         }
 
-        public FindTransactionRequest(string merchantCode, string merchantAccountCode, string transactionCode, uint? gatewayTransID, Guid? purchaseToken, string invoiceNum)
+        public FindTransactionRequestMessage(string merchantCode, string merchantAccountCode, string transactionCode, uint? gatewayTransID, Guid? purchaseToken, string invoiceNum)
         {
             MerchantCode = merchantCode;
             MerchantAccountCode = merchantAccountCode;
@@ -27,7 +27,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             InvoiceNum = invoiceNum;
         }
 
-        public FindTransactionRequest(FindTransaction request)
+        public FindTransactionRequestMessage(FindTransactionRequest request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;
@@ -44,7 +44,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<FindTransactionRequest>();
+            return ToXmlRequestString<FindTransactionRequestMessage>();
         }
 
         public bool ShouldSerializeGatewayTransID()

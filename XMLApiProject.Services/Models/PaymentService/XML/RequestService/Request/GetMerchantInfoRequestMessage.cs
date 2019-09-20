@@ -3,15 +3,15 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class GetMerchantInfoRequest: RequestMessageBase
+    public class GetMerchantInfoRequestMessage: RequestMessageBase
     {
         public Guid? PurchaseToken { get; set; }
 
-        public GetMerchantInfoRequest()
+        public GetMerchantInfoRequestMessage()
         {
         }
 
-        public GetMerchantInfoRequest(Guid? purchaseToken)
+        public GetMerchantInfoRequestMessage(Guid? purchaseToken)
         {
             PurchaseToken = purchaseToken;
         }
@@ -23,7 +23,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<GetMerchantInfoRequest>();
+            return ToXmlRequestString<GetMerchantInfoRequestMessage>();
         }
 
         public bool ShouldSerializePurchaseToken()

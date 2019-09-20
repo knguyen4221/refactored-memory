@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class Item
+    public class ItemRequestMessage
     {
         [StringLength(12)]
         [Required]
