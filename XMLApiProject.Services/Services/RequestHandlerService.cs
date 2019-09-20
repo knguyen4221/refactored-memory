@@ -91,7 +91,7 @@ namespace XMLApiProject.Services.Services
         }
 
         //Note: Able to hit the endpoint, but can't uniquely hit them....
-        public async Task<BaseResponse<Models.PaymentService.XML.RequestService.Responses.Capture>> Capture(CaptureRequest request)
+        public async Task<BaseResponse<Capture>> Capture(CaptureRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(123456, DateTime.Now, Utilities.Constants.RequestTypes.Capture, new CaptureRequestMessage(request, 123456));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Capture>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
