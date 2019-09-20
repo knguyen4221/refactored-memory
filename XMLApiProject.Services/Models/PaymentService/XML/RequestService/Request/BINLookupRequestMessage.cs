@@ -18,7 +18,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             BIN = bin;
         }
 
-        public BINLookupRequestMessage(BINRequest request)
+        public BINLookupRequestMessage(IBINRequest request)
         {
             BIN = request.BIN;
         }

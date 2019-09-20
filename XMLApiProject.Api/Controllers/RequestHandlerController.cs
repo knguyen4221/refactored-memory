@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using XMLApiProject.Services.Models.PaymentService.Entities;
+using XMLApiProject.Api.Models.PaymentService.Entities;
 using XMLApiProject.Services.Services.Interfaces;
 using XMLApiProject.Services.Utilities;
 
@@ -119,7 +119,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("authorize/trackData")]
-        public async Task<ActionResult> TrackData([FromBody] TrackRequest request)
+        public async Task<ActionResult> TrackData([FromBody]TrackRequest request)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         [HttpPost("authorize/capture")]
-        public async Task<ActionResult> Capture([FromBody] AuthorizationRequest request)
+        public async Task<ActionResult> Capture([FromBody]AuthorizationRequest request)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         [HttpPost("tokenizeAccount")]
-        public async Task<ActionResult> TokenizeAccount([FromBody] TokenizeAccountRequest request)
+        public async Task<ActionResult> TokenizeAccount([FromBody]TokenizeAccountRequest request)
         {
             try
             {
@@ -175,7 +175,7 @@ namespace XMLApiProject.Api.Controllers
 
 
         [HttpPost("balanceInquiry")]
-        public async Task<ActionResult> BalanceInquiry([FromBody] BalanceInquiryRequest request)
+        public async Task<ActionResult> BalanceInquiry([FromBody]BalanceInquiryRequest request)
         {
             try
             {

@@ -39,7 +39,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             
         }
 
-        public TokenizeAccountRequestMessage(TokenizeAccountRequest request)
+        public TokenizeAccountRequestMessage(ITokenizeAccountRequest request)
         {
             BankAccountNum = request.BankAccountNum;
             SoftwareVendor = request.SoftwareVendor;

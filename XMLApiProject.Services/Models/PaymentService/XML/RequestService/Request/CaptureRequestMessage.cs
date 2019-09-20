@@ -44,7 +44,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         #endregion
 
 
-        public CaptureRequestMessage(CaptureRequest request, int transactionCode)
+        public CaptureRequestMessage(ICaptureRequest request, int transactionCode)
         {
             MerchantAccountCode = request.MerchantAccountCode;
             MerchantCode = request.MerchantCode;

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class TokenizeAccountRequest
+    public interface IUpdatePasswordRequest
     {
-        public string BankAccountNum { get; set; }
-        public string SoftwareVendor { get; set; }
+        string NewPassword { get; set; }
+        string ConfirmPassword { get; set; }
     }
 }

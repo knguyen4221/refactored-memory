@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using XMLApiProject.Services.Models.PaymentService.Entities;
 
-namespace XMLApiProject.Services.Models.PaymentService.Entities
+namespace XMLApiProject.Api.Models.PaymentService.Entities
 {
     /// <summary>
     /// Get Token on our end for our REST endpoint
     /// </summary>
-    public class GetTokenRequest
+    public class GetTokenRequest: IGetTokenRequest
     {
         public string PaymentAccountNumber { get; set; }
         public DateTime ExpirationDate { get; set; }

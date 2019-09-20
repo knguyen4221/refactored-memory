@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using XMLApiProject.Services.Models.PaymentService.Entities;
 
-namespace XMLApiProject.Services.Models.PaymentService.Entities
+namespace XMLApiProject.Api.Models.PaymentService.Entities
 {
-    public class TrackRequest
+    public class TrackRequest: ITrackRequest
     {
         public uint? MerchantCode { get; set; }
         public uint? MerchantAccountCode { get; set; }

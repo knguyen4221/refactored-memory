@@ -205,7 +205,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ExpirationDate = expirationDate;
         }
 
-        public AuthorizationRequestMessage(AuthorizationRequest authorizationRequest)
+        public AuthorizationRequestMessage(IAuthorizationRequest authorizationRequest)
         {
             //Missing custom fields for now
             MerchantCode = authorizationRequest.MerchantCode;
@@ -227,7 +227,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             AccountZip = authorizationRequest.AccountZip;
         }
 
-        public AuthorizationRequestMessage(TrackRequest trackRequest)
+        public AuthorizationRequestMessage(ITrackRequest trackRequest)
         {
             MerchantCode = trackRequest.MerchantCode;
             MerchantAccountCode = trackRequest.MerchantAccountCode;
