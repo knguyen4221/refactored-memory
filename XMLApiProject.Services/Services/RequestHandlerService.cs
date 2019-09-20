@@ -26,7 +26,7 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<EncryptionKey>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request)
+        public async Task<BaseResponse<GetToken>> GetToken(IGetTokenRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken, new MultiUseTokenRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
@@ -39,24 +39,24 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Ping>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<Auth>> Capture(AuthorizationRequest request)
+        public async Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 
-        public async Task<BaseResponse<Auth>> Track(TrackRequest request)
+        public async Task<BaseResponse<Auth>> Track(ITrackRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateTrackBaseRequest(123456890, DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
-        public async Task<BaseResponse<BINLookup>> BINLookup(BINRequest request)
+        public async Task<BaseResponse<BINLookup>> BINLookup(IBINRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.BINLookup, new BINLookupRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<BINLookup>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request)
+        public async Task<BaseResponse<UpdatePassword>> ChangePassword(IUpdatePasswordRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.UpdatePassword, new ChangePasswordRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<UpdatePassword>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
@@ -68,13 +68,13 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<MerchantInfo>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request)
+        public async Task<BaseResponse<VoidRefund>> VoidOrRefund(IVoidRefundRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund, new VoidOrRefundRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<VoidRefund>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<GetToken>> TokenizeAccount(TokenizeAccountRequest request)
+        public async Task<BaseResponse<GetToken>> TokenizeAccount(ITokenizeAccountRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.TokenizeAccount, new TokenizeAccountRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
@@ -83,7 +83,7 @@ namespace XMLApiProject.Services.Services
         //Note: Doesn't work with our credentials
         //Note: returns merchant service lookup unavailable
         //Note: Not sure if this endpoint will even be leveraged
-        public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request)
+        public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(IBalanceInquiryRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
                 new BalanceInquiryRequestMessage(request));
@@ -91,19 +91,19 @@ namespace XMLApiProject.Services.Services
         }
 
         //Note: Able to hit the endpoint, but can't uniquely hit them....
-        public async Task<BaseResponse<Capture>> Capture(CaptureRequest request)
+        public async Task<BaseResponse<Capture>> Capture(ICaptureRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(123456, DateTime.Now, Utilities.Constants.RequestTypes.Capture, new CaptureRequestMessage(request, 123456));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Capture>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 	
-	    public async Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlementRequest request)
+	    public async Task<BaseResponse<CloseCycle>> InitiateSettlement(IInitiateSettlementRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.InitiateSettlement, new InitiateSettlementRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<CloseCycle>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
-        public async Task<BaseResponse<Find>> FindTransaction(FindTransactionRequest request)
+        public async Task<BaseResponse<Find>> FindTransaction(IFindTransactionRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(1234, DateTime.Now, Utilities.Constants.RequestTypes.FindTransaction, new FindTransactionRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Find>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);

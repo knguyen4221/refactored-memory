@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using XMLApiProject.Services.Models.PaymentService.Entities;
 
-namespace XMLApiProject.Services.Models.PaymentService.Entities
+namespace XMLApiProject.Api.Models.PaymentService.Entities
 {
     //TODO: Support for custom fields
-    public class AuthorizationRequest
+    public class AuthorizationRequest: IAuthorizationRequest
     {
         public uint? MerchantCode { get; set; }
         public uint? MerchantAccountCode { get; set; }

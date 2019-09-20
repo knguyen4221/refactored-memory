@@ -85,7 +85,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             VoidReasonCode = voidReasonCode;
         }
 
-        public VoidOrRefundRequestMessage(VoidRefundRequest request)
+        public VoidOrRefundRequestMessage(IVoidRefundRequest request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;

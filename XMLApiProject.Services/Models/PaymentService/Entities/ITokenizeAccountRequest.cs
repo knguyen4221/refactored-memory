@@ -4,8 +4,9 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class BINRequest
+    public interface ITokenizeAccountRequest
     {
-        public string BIN { get; set; }
+        string BankAccountNum { get; set; }
+        string SoftwareVendor { get; set; }
     }
 }

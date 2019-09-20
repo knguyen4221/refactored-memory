@@ -88,7 +88,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public BalanceInquiryRequestMessage() { }
 
-        public BalanceInquiryRequestMessage(BalanceInquiryRequest request)
+        public BalanceInquiryRequestMessage(IBalanceInquiryRequest request)
         {
             PaymentAccountNumber = request.PaymentAccountNumber;
             ExpirationDate = request.ExpirationDate.ToString("MMyy");

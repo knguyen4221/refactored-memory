@@ -10,18 +10,18 @@ namespace XMLApiProject.Services.Services.Interfaces
     public interface IRequestHandlerService
     {
         Task<BaseResponse<Ping>> Ping();
-        Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request);
+        Task<BaseResponse<GetToken>> GetToken(IGetTokenRequest request);
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
-        Task<BaseResponse<Auth>> Capture(AuthorizationRequest request);
-        Task<BaseResponse<Capture>> Capture(CaptureRequest request);
-        Task<BaseResponse<Auth>> Track(TrackRequest request);
-        Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
-        Task<BaseResponse<GetToken>> TokenizeAccount(TokenizeAccountRequest request);
-        Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
+        Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request);
+        Task<BaseResponse<Capture>> Capture(ICaptureRequest request);
+        Task<BaseResponse<Auth>> Track(ITrackRequest request);
+        Task<BaseResponse<BINLookup>> BINLookup(IBINRequest request);
+        Task<BaseResponse<GetToken>> TokenizeAccount(ITokenizeAccountRequest request);
+        Task<BaseResponse<UpdatePassword>> ChangePassword(IUpdatePasswordRequest request);
         Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
-        Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
-        Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request);
-        Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlementRequest request);
-        Task<BaseResponse<Find>> FindTransaction(FindTransactionRequest request);
+        Task<BaseResponse<VoidRefund>> VoidOrRefund(IVoidRefundRequest request);
+        Task<BaseResponse<AccountInquiry>> BalanceInquiry(IBalanceInquiryRequest request);
+        Task<BaseResponse<CloseCycle>> InitiateSettlement(IInitiateSettlementRequest request);
+        Task<BaseResponse<Find>> FindTransaction(IFindTransactionRequest request);
     }
 }
