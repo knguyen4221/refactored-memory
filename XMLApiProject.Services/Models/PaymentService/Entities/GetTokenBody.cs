@@ -7,7 +7,7 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
     /// <summary>
     /// Get Token on our end for our REST endpoint
     /// </summary>
-    public class GetTokenRequest
+    public class GetTokenBody
     {
         public string PaymentAccountNumber { get; set; }
         public DateTime ExpirationDate { get; set; }

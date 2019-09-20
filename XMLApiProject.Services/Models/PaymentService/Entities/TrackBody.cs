@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class TrackRequest
+    public class TrackBody
     {
         public uint? MerchantCode { get; set; }
         public uint? MerchantAccountCode { get; set; }

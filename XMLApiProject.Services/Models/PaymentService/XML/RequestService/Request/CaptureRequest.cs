@@ -6,7 +6,7 @@ using XMLApiProject.Services.Models.PaymentService.Entities;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class Capture: RequestMessageBase
+    public class CaptureRequest: RequestMessageBase
     {
 
         #region Properties
@@ -44,7 +44,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         #endregion
 
 
-        public Capture(CaptureRequest request, int transactionCode)
+        public CaptureRequest(CaptureBody request, int transactionCode)
         {
             MerchantAccountCode = request.MerchantAccountCode;
             MerchantCode = request.MerchantCode;
@@ -64,7 +64,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             this.TransactionCode = transactionCode.ToString();
         }
 
-        public Capture() { }
+        public CaptureRequest() { }
 
         public override string GetResponseRootName()
         {
@@ -73,7 +73,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<Capture>();
+            return ToXmlRequestString<CaptureRequest>();
         }
 
         public bool ShouldSerializeSettlementDelay()

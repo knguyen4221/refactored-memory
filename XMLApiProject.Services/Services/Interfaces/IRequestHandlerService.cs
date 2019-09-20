@@ -10,18 +10,18 @@ namespace XMLApiProject.Services.Services.Interfaces
     public interface IRequestHandlerService
     {
         Task<BaseResponse<Ping>> Ping();
-        Task<BaseResponse<GetToken>> GetToken(GetTokenRequest request);
+        Task<BaseResponse<GetToken>> GetToken(GetTokenBody request);
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
-        Task<BaseResponse<Auth>> Capture(AuthorizationRequest request);
-        Task<BaseResponse<Capture>> Capture(CaptureRequest request);
-        Task<BaseResponse<Auth>> Track(TrackRequest request);
-        Task<BaseResponse<BINLookup>> BINLookup(BINRequest request);
-        Task<BaseResponse<GetToken>> TokenizeAccount(TokenizeAccountRequest request);
-        Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordRequest request);
+        Task<BaseResponse<Auth>> Capture(AuthorizationBody request);
+        Task<BaseResponse<Capture>> Capture(CaptureBody request);
+        Task<BaseResponse<Auth>> Track(TrackBody request);
+        Task<BaseResponse<BINLookup>> BINLookup(BINLookupBody request);
+        Task<BaseResponse<GetToken>> TokenizeAccount(TokenizeAccountBody request);
+        Task<BaseResponse<UpdatePassword>> ChangePassword(UpdatePasswordBody request);
         Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken);
-        Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundRequest request);
-        Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryRequest request);
-        Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlement request);
-        Task<BaseResponse<Find>> FindTransaction(FindTransaction request);
+        Task<BaseResponse<VoidRefund>> VoidOrRefund(VoidRefundBody request);
+        Task<BaseResponse<AccountInquiry>> BalanceInquiry(BalanceInquiryBody request);
+        Task<BaseResponse<CloseCycle>> InitiateSettlement(InitiateSettlementBody request);
+        Task<BaseResponse<Find>> FindTransaction(FindTransactionBody request);
     }
 }

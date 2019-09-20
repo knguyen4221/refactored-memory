@@ -7,7 +7,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class TokenizeAccount : RequestMessageBase
+    public class TokenizeAccountRequest : RequestMessageBase
     {
 
         #region Properties
@@ -34,12 +34,12 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public string IntegrationMethod { get; set; }
         #endregion
 
-        public TokenizeAccount()
+        public TokenizeAccountRequest()
         {
             
         }
 
-        public TokenizeAccount(TokenizeAccountRequest request)
+        public TokenizeAccountRequest(TokenizeAccountBody request)
         {
             BankAccountNum = request.BankAccountNum;
             SoftwareVendor = request.SoftwareVendor;
@@ -52,7 +52,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public override RawRequestMessageString ToXmlRequestString()
         {
-            return ToXmlRequestString<TokenizeAccount>();
+            return ToXmlRequestString<TokenizeAccountRequest>();
         }
     }
 }

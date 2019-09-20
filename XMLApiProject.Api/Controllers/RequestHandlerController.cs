@@ -50,7 +50,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("multiUseToken")]
-        public async Task<ActionResult> GetToken([FromBody]GetTokenRequest request)
+        public async Task<ActionResult> GetToken([FromBody]GetTokenBody request)
         {
             try
             { 
@@ -96,7 +96,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("binLookup")]
-        public async Task<ActionResult> BINLookup([FromBody]BINRequest request)
+        public async Task<ActionResult> BINLookup([FromBody]BINLookupBody request)
         {
             try
             {
@@ -119,7 +119,7 @@ namespace XMLApiProject.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("authorize/trackData")]
-        public async Task<ActionResult> TrackData([FromBody] TrackRequest request)
+        public async Task<ActionResult> TrackData([FromBody] TrackBody request)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         [HttpPost("authorize/capture")]
-        public async Task<ActionResult> Capture([FromBody] AuthorizationRequest request)
+        public async Task<ActionResult> Capture([FromBody] AuthorizationBody request)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         [HttpPost("tokenizeAccount")]
-        public async Task<ActionResult> TokenizeAccount([FromBody] TokenizeAccountRequest request)
+        public async Task<ActionResult> TokenizeAccount([FromBody] TokenizeAccountBody request)
         {
             try
             {
@@ -175,7 +175,7 @@ namespace XMLApiProject.Api.Controllers
 
 
         [HttpPost("balanceInquiry")]
-        public async Task<ActionResult> BalanceInquiry([FromBody] BalanceInquiryRequest request)
+        public async Task<ActionResult> BalanceInquiry([FromBody] BalanceInquiryBody request)
         {
             try
             {
@@ -245,7 +245,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("voidRefund")]
-        public async Task<ActionResult> VoidOrRefund([FromBody]VoidRefundRequest request)
+        public async Task<ActionResult> VoidOrRefund([FromBody]VoidRefundBody request)
         {
             try
             {
@@ -267,7 +267,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("initiateSettlement")]
-        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlement request)
+        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlementBody request)
         {
             try
             {
@@ -289,7 +289,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("findTransaction")]
-        public async Task<ActionResult> FindTransaction([FromBody]FindTransaction request)
+        public async Task<ActionResult> FindTransaction([FromBody]FindTransactionBody request)
         {
             try
             {
@@ -307,7 +307,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         [HttpPost("capture")]
-        public async Task<ActionResult> CaptureRequest([FromBody]CaptureRequest request)
+        public async Task<ActionResult> CaptureRequest([FromBody]CaptureBody request)
         {
             try
             {

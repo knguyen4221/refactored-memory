@@ -70,7 +70,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             SecurityTechnology = securityTechnology;
         }
 
-        public MultiUseTokenRequest(GetTokenRequest request)
+        public MultiUseTokenRequest(GetTokenBody request)
         {
             {
                 PaymentAccountNumber = request.PaymentAccountNumber;

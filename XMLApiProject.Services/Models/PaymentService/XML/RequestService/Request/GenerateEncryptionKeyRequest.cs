@@ -6,7 +6,7 @@ using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
 {
-    public class GenerateEncryptionKey : RequestMessageBase
+    public class GenerateEncryptionKeyRequest : RequestMessageBase
     {
         public override string GetResponseRootName()
         {

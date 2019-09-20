@@ -21,7 +21,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ConfirmPassword = confirmPassword;
         }
 
-        public ChangePasswordRequest(UpdatePasswordRequest request)
+        public ChangePasswordRequest(UpdatePasswordBody request)
         {
             NewPassword = request.NewPassword;
             ConfirmPassword = request.ConfirmPassword;

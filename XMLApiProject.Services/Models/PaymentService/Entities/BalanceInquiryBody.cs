@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class BalanceInquiryRequest
+    public class BalanceInquiryBody
     {
         public string PaymentAccountNumber { get; set; }
         public DateTime ExpirationDate { get; set; }

@@ -27,7 +27,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             InvoiceNum = invoiceNum;
         }
 
-        public FindTransactionRequest(FindTransaction request)
+        public FindTransactionRequest(FindTransactionBody request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;

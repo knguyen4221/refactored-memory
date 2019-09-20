@@ -22,7 +22,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             MerchantAccountCode = merchantAccountCode;
         }
 
-        public InitiateSettlementRequest(InitiateSettlement request)
+        public InitiateSettlementRequest(InitiateSettlementBody request)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;

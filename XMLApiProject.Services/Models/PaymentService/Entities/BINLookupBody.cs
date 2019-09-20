@@ -4,9 +4,8 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class UpdatePasswordRequest
+    public class BINLookupBody
     {
-        public string NewPassword { get; set; }
-        public string ConfirmPassword { get; set; }
+        public string BIN { get; set; }
     }
 }

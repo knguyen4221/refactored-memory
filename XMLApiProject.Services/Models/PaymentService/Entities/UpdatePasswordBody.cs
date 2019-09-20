@@ -4,9 +4,9 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public class InitiateSettlement
+    public class UpdatePasswordBody
     {
-        public string MerchantCode { get; set; }
-        public string MerchantAccountCode { get; set; }
+        public string NewPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }
