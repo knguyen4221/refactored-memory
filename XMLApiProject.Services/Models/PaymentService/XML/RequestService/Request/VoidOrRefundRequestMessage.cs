@@ -92,7 +92,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             Amount = request.Amount;
             ReferenceNumber = request.ReferenceNumber;
             TransactionType = request.TransactionType;
-            TransactionCode = generatedGuid;
+            TransactionCode = generatedGuid.ToString();
             PurchaseToken = request.PurchaseToken;
             OriginatingTechnologySource = request.OriginatingTechnologySource;
             SoftwareVendor = request.SoftwareVendor;
