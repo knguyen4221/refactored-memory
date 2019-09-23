@@ -26,8 +26,7 @@ namespace XMLApiProject.Services.Services
         public async Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey()
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(DateTime.Now, Utilities.Constants.RequestTypes.EncryptionKey, 
-                new GenerateEncryptionKeyRequestMessage(_configuration.GetSection("Credentials")["merchantAccountCode"], 
-                _configuration.GetSection("Credentials")["merchantCode"]));
+                new GenerateEncryptionKeyRequestMessage());
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<EncryptionKey>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
@@ -49,13 +48,14 @@ namespace XMLApiProject.Services.Services
         //Note: uses authorize request
         public async Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
+                new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 
-        public async Task<BaseResponse<Auth>> Track(ITrackRequest request)
+        public async Task<BaseResponse<Auth>> CaptureSwipe(ITrackRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateTrackBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
         public async Task<BaseResponse<BINLookup>> BINLookup(IBINRequest request)
@@ -94,7 +94,7 @@ namespace XMLApiProject.Services.Services
         //Note: Not sure if this endpoint will even be leveraged
         public async Task<BaseResponse<AccountInquiry>> BalanceInquiry(IBalanceInquiryRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateAuthorizeBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.AccountInquiry,
                 new BalanceInquiryRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<AccountInquiry>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
