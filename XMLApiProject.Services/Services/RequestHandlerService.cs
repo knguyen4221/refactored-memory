@@ -46,14 +46,14 @@ namespace XMLApiProject.Services.Services
         }
 
         //Note: uses authorize request
-        public async Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request)
+        public async Task<BaseResponse<Auth>> Authorize(IAuthorizationRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
                 new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 
-        public async Task<BaseResponse<Auth>> CaptureSwipe(IAuthorizeSwipe request)
+        public async Task<BaseResponse<Auth>> AuthorizeSwipe(IAuthorizeSwipeRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);

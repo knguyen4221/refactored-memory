@@ -12,9 +12,9 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<Ping>> Ping();
         Task<BaseResponse<GetToken>> GetToken(IGetTokenRequest request);
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
-        Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request);
+        Task<BaseResponse<Auth>> Authorize(IAuthorizationRequest request);
         Task<BaseResponse<Capture>> Capture(ICaptureRequest request);
-        Task<BaseResponse<Auth>> CaptureSwipe(IAuthorizeSwipe request);
+        Task<BaseResponse<Auth>> AuthorizeSwipe(IAuthorizeSwipeRequest request);
         Task<BaseResponse<BINLookup>> BINLookup(IBINRequest request);
         Task<BaseResponse<GetToken>> TokenizeAccount(ITokenizeAccountRequest request);
         Task<BaseResponse<UpdatePassword>> ChangePassword(IUpdatePasswordRequest request);

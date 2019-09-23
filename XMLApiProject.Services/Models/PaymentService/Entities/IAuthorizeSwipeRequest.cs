@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XMLApiProject.Services.Models.PaymentService.Entities
 {
-    public interface IAuthorizeSwipe
+    public interface IAuthorizeSwipeRequest
     {
         uint? MerchantCode { get; set; }
         uint? MerchantAccountCode { get; set; }

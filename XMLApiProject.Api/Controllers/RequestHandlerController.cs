@@ -118,12 +118,12 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("authorize/trackData")]
-        public async Task<ActionResult> TrackData([FromBody]TrackRequest request)
+        [HttpPost("authorize/swipe")]
+        public async Task<ActionResult> AuthorizeSwipe([FromBody]AuthorizeSwipeRequest request)
         {
             try
             {
-                var response = await _requestHandlerService.CaptureSwipe(request);
+                var response = await _requestHandlerService.AuthorizeSwipe(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
@@ -141,12 +141,12 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("authorize/capture")]
-        public async Task<ActionResult> Capture([FromBody]AuthorizationRequest request)
+        [HttpPost("authorize")]
+        public async Task<ActionResult> Authorize([FromBody]AuthorizationRequest request)
         {
             try
             {
-                var response = await _requestHandlerService.Capture(request);
+                var response = await _requestHandlerService.Authorize(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
