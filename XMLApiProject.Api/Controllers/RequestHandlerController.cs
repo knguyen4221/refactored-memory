@@ -114,7 +114,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Public track request...One of the sampel operations
+        /// Public track request...One of the sample operations...Another half of the authorize request with different set of data
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -123,7 +123,7 @@ namespace XMLApiProject.Api.Controllers
         {
             try
             {
-                var response = await _requestHandlerService.Track(request);
+                var response = await _requestHandlerService.CaptureSwipe(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
@@ -136,6 +136,11 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Authorize request with a different set of data.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("authorize/capture")]
         public async Task<ActionResult> Capture([FromBody]AuthorizationRequest request)
         {
@@ -154,6 +159,11 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Use to tokenize a bank account number for ACH transactions
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("tokenizeAccount")]
         public async Task<ActionResult> TokenizeAccount([FromBody]TokenizeAccountRequest request)
         {
@@ -173,7 +183,11 @@ namespace XMLApiProject.Api.Controllers
         }
 
 
-
+        /// <summary>
+        /// Account inquiry request information for balance inquiry
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("balanceInquiry")]
         public async Task<ActionResult> BalanceInquiry([FromBody]BalanceInquiryRequest request)
         {
@@ -241,7 +255,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// Use the void/refund request to issue a void against an unsettled authorization or a refund against a settled transaction
         /// </summary>
         /// <returns></returns>
         [HttpPost("voidRefund")]
@@ -306,6 +320,11 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Used to confirm a previously authorized sale.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("capture")]
         public async Task<ActionResult> CaptureRequest([FromBody]CaptureRequest request)
         {

@@ -8,6 +8,9 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 {
     public class GenerateEncryptionKeyRequestMessage : RequestMessageBase
     {
+
+        public GenerateEncryptionKeyRequestMessage() { }
+
         public override string GetResponseRootName()
         {
             return nameof(EncryptionKey);

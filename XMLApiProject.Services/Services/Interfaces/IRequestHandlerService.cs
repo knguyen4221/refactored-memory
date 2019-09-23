@@ -14,7 +14,7 @@ namespace XMLApiProject.Services.Services.Interfaces
         Task<BaseResponse<EncryptionKey>> GenerateEncryptionKey();
         Task<BaseResponse<Auth>> Capture(IAuthorizationRequest request);
         Task<BaseResponse<Capture>> Capture(ICaptureRequest request);
-        Task<BaseResponse<Auth>> Track(ITrackRequest request);
+        Task<BaseResponse<Auth>> CaptureSwipe(ITrackRequest request);
         Task<BaseResponse<BINLookup>> BINLookup(IBINRequest request);
         Task<BaseResponse<GetToken>> TokenizeAccount(ITokenizeAccountRequest request);
         Task<BaseResponse<UpdatePassword>> ChangePassword(IUpdatePasswordRequest request);
