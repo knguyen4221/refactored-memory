@@ -9,7 +9,12 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
     /// </summary>
     public interface IGetTokenRequest
     {
+        string MerchantAccountCode { get; set; }
+        string MerchantCode { get; set; }
         string PaymentAccountNumber { get; set; }
+        /// <summary>
+        /// As DateTime but only the year and month matter since input to XML api only needs string
+        /// </summary>
         DateTime ExpirationDate { get; set; }
         string MSRKey { get; set; }
         string SecureFormat { get; set; }

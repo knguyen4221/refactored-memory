@@ -85,14 +85,14 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             VoidReasonCode = voidReasonCode;
         }
 
-        public VoidOrRefundRequestMessage(IVoidRefundRequest request)
+        public VoidOrRefundRequestMessage(IVoidRefundRequest request, Guid generatedGuid)
         {
             MerchantCode = request.MerchantCode;
             MerchantAccountCode = request.MerchantAccountCode;
             Amount = request.Amount;
             ReferenceNumber = request.ReferenceNumber;
             TransactionType = request.TransactionType;
-            TransactionCode = request.TransactionCode;
+            TransactionCode = generatedGuid;
             PurchaseToken = request.PurchaseToken;
             OriginatingTechnologySource = request.OriginatingTechnologySource;
             SoftwareVendor = request.SoftwareVendor;

@@ -9,6 +9,8 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
     public class CaptureRequestMessage: RequestMessageBase
     {
 
+        private const string _transactionType = "capture";
+
         #region Properties
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
@@ -16,8 +18,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         [Required]
         public uint Amount { get; set; }
 
+        /// <summary>
+        /// The transaction type is always capture for capture requests
+        /// </summary>
         [Required]
-        public string TransactionType { get; set; }
+        public string TransactionType { get; set; } = _transactionType;
         [Required]
         public string TransactionCode { get; set; }
         [Required]
@@ -49,7 +54,6 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             MerchantAccountCode = request.MerchantAccountCode;
             MerchantCode = request.MerchantCode;
             Amount = request.Amount;
-            TransactionType = request.TransactionType;
             SettlementDelay = request.SettlementDelay;
             SecurityTechnology = request.SecurityTechnology;
             OriginatingTechnologySource = request.OriginatingTechnologySource;

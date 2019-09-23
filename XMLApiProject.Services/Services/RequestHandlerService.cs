@@ -33,8 +33,7 @@ namespace XMLApiProject.Services.Services
         public async Task<BaseResponse<GetToken>> GetToken(IGetTokenRequest request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(DateTime.Now, Utilities.Constants.RequestTypes.MultiUseToken, 
-                new MultiUseTokenRequestMessage(request, _configuration.GetSection("Credentials")["merchantAccountCode"],
-                _configuration.GetSection("Credentials")["merchantCode"]));
+                new MultiUseTokenRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<GetToken>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
@@ -72,14 +71,16 @@ namespace XMLApiProject.Services.Services
 
         public async Task<BaseResponse<MerchantInfo>> GetMerchantInfo(Guid? purchaseToken)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo, 
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.GetMerchantInfo,
                 new GetMerchantInfoRequestMessage(purchaseToken));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<MerchantInfo>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
         public async Task<BaseResponse<VoidRefund>> VoidOrRefund(IVoidRefundRequest request)
         {
-            var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund, new VoidOrRefundRequestMessage(request));
+            var generatedGuid = Guid.NewGuid();
+            var baseRequest = _baseRequestFactory.CreateBaseRequest(generatedGuid, DateTime.Now, Utilities.Constants.RequestTypes.VoidOrRefund,
+                new VoidOrRefundRequestMessage(request, generatedGuid));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<VoidRefund>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         }
 
