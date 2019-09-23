@@ -53,7 +53,7 @@ namespace XMLApiProject.Services.Services
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 
-        public async Task<BaseResponse<Auth>> CaptureSwipe(ITrackRequest request)
+        public async Task<BaseResponse<Auth>> CaptureSwipe(IAuthorizeSwipe request)
         {
             var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization, new AuthorizationRequestMessage(request));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);

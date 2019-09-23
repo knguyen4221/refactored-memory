@@ -227,7 +227,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             AccountZip = authorizationRequest.AccountZip;
         }
 
-        public AuthorizationRequestMessage(ITrackRequest trackRequest)
+        public AuthorizationRequestMessage(IAuthorizeSwipe trackRequest)
         {
             MerchantCode = trackRequest.MerchantCode;
             MerchantAccountCode = trackRequest.MerchantAccountCode;
