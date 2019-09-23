@@ -114,7 +114,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Public track request...One of the sample operations...Another half of the authorize request with different set of data
+        /// Authorize sale request with swiped transactions
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Authorize request with a different set of data.
+        /// Authorize request with non-swipe
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
