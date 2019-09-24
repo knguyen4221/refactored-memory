@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XMLApiProject", "XMLApiProject\XMLApiProject.csproj", "{D618A85D-8143-406F-B102-D68888318F81}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XMLApiProject.Api", "XMLApiProject.Api\XMLApiProject.Api.csproj", "{D7397CFA-E83E-479A-8800-6CBB8201A247}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XMLApiProject.Services", "XMLApiProject.Services\XMLApiProject.Services.csproj", "{3A960BF9-BA83-4E82-9BFE-C4215E17F90D}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D618A85D-8143-406F-B102-D68888318F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D618A85D-8143-406F-B102-D68888318F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D618A85D-8143-406F-B102-D68888318F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D618A85D-8143-406F-B102-D68888318F81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7397CFA-E83E-479A-8800-6CBB8201A247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7397CFA-E83E-479A-8800-6CBB8201A247}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7397CFA-E83E-479A-8800-6CBB8201A247}.Release|Any CPU.ActiveCfg = Release|Any CPU

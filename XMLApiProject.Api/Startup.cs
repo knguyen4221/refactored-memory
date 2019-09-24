@@ -66,7 +66,7 @@ namespace XMLApiProject.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PepeGasp Api");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BridgePay REST Api Facade");
                 c.RoutePrefix = String.Empty;
             });
 
