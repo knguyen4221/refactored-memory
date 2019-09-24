@@ -8,6 +8,8 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
     /// </summary>
     public class GetTokenRequest: IGetTokenRequest
     {
+        public string MerchantAccountCode { get; set; }
+        public string MerchantCode { get; set; }
         public string PaymentAccountNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string MSRKey { get; set; }

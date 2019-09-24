@@ -10,7 +10,6 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         public uint Amount { get; set; }
         public string ReferenceNumber { get; set; }
         public string TransactionType { get; set; }
-        public string TransactionCode { get; set; }
         public Guid? PurchaseToken { get; set; }
         public string OriginatingTechnologySource { get; set; }
         public string SoftwareVendor { get; set; }

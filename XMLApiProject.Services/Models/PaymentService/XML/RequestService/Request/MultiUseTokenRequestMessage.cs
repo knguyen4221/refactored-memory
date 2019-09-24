@@ -72,7 +72,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             SecurityTechnology = securityTechnology;
         }
 
-        public MultiUseTokenRequestMessage(IGetTokenRequest request, string merchantCode, string merchantAccountCode)
+        public MultiUseTokenRequestMessage(IGetTokenRequest request)
         {
             {
                 PaymentAccountNumber = request.PaymentAccountNumber;
@@ -94,8 +94,8 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
                 OriginatingTechnologySource = request.OriginatingTechnologySource;
                 SoftwareVendor = request.SoftwareVendor;
                 SecurityTechnology = request.SecurityTechnology;
-                MerchantCode = merchantCode;
-                MerchantAccountCode = merchantAccountCode;
+                MerchantCode = request.MerchantCode;
+                MerchantAccountCode = request.MerchantAccountCode;
             }
         }
         #endregion

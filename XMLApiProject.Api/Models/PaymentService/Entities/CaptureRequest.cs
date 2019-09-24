@@ -7,7 +7,6 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         public string MerchantCode { get; set; }
         public string MerchantAccountCode { get; set; }
         public uint Amount { get; set; }
-        public string TransactionType { get; set; }
         public uint? SettlementDelay { get; set; }
         public string OriginatingTechnologySource { get; set; }
         public string SecurityTechnology { get; set; }

@@ -2,7 +2,7 @@
 
 namespace XMLApiProject.Api.Models.PaymentService.Entities
 {
-    public class TrackRequest: ITrackRequest
+    public class AuthorizeSwipeRequest: IAuthorizeSwipeRequest
     {
         public uint? MerchantCode { get; set; }
         public uint? MerchantAccountCode { get; set; }
