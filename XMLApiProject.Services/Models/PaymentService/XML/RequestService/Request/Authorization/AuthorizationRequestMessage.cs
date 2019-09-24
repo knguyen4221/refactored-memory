@@ -225,6 +225,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             HolderType = authorizationRequest.HolderType;
             AccountStreet = authorizationRequest.AccountStreet;
             AccountZip = authorizationRequest.AccountZip;
+            ContractId = authorizationRequest.ContractId;
         }
 
         public AuthorizationRequestMessage(IAuthorizeSwipeRequest trackRequest)

@@ -26,5 +26,6 @@ namespace XMLApiProject.Services.Models.PaymentService.Entities
         string AccountZip { get; set; }
         string PONum { get; set; }
         string CustomerAccountCode { get; }
+        uint? ContractId { get; set; }
     }
 }

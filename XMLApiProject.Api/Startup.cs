@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PurchaseTokenService;
+using XMLApiProject.Api.Utilities;
 using XMLApiProject.Services.Services;
 using XMLApiProject.Services.Services.Factories;
 using XMLApiProject.Services.Services.Interfaces;
@@ -34,6 +35,7 @@ namespace XMLApiProject.Api
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+                c.SchemaFilter<DefaultValueFilter>();
             });
             services.AddHttpClient();
             services.AddSingleton<IHasBaseRequest>(new BaseRequestFactory(Configuration));

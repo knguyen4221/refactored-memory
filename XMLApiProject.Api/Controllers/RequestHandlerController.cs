@@ -45,7 +45,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Sends a request for a Multi-Use Request Token
+        /// Sends a request for a Multi-Use Request Token, which is used to tokenize a single card entry without the CVV
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Authorize sale request with swiped transactions
+        /// Authorize sale request with swiped transactions. Can be ignored. I don't think there will be transactions in a subscription system that works via card swipes.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -184,7 +184,7 @@ namespace XMLApiProject.Api.Controllers
 
 
         /// <summary>
-        /// Account inquiry request information for balance inquiry
+        /// Account inquiry request. Mainly just a balance inquiry. Any account inquiries are disabled.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -277,7 +277,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Sends a request to initiate a settlement
+        /// Sends a request to initiate a settlement. Unsettled transactions will be submitted to the processors for settlement.
         /// </summary>
         /// <returns></returns>
         [HttpPost("initiateSettlement")]
@@ -321,7 +321,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Used to confirm a previously authorized sale.
+        /// Used to confirm a previously authorized sale. Transactions that are not confirmed will be voided at settlement time.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
