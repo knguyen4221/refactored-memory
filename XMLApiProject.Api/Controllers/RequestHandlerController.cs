@@ -232,7 +232,7 @@ namespace XMLApiProject.Api.Controllers
         //}
 
         /// <summary>
-        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// Gets Merchant Info for a merchant with a particular set of credentials
         /// </summary>
         /// <param name="purchaseToken"></param>
         /// <returns></returns>
