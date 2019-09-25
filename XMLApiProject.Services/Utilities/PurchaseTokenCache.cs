@@ -35,7 +35,8 @@ namespace XMLApiProject.Services.Utilities
                 {
                     Value = await AcquirePurchaseTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo),
                     IssuedDate = DateTime.Now,
-                    PurchaserInfo = purchaserInfo
+                    PurchaserInfo = purchaserInfo,
+                    TransactionInfo = transactionInfo
                 };
 
                 token.ExpirationDate = token.IssuedDate.AddMinutes(15);
@@ -48,10 +49,33 @@ namespace XMLApiProject.Services.Utilities
             return token;
         }
 
-        //What return type for GetAndConsume?
-        //public async Task<PurchaseToken> GetAndConsumeTokenAsync(string userName, string password, string certificationId, string transactionAmount, string purchaserInfo, string transactionInfo)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<PurchaseToken> GetAndConsumeTokenAsync(string userName, string password, string certificationId, int transactionAmount, string purchaserInfo, string transactionInfo)
+        {
+            PurchaseToken token;
+
+            if (_cache.ContainsKey(purchaserInfo))
+            {
+                token = _cache[purchaserInfo];
+                if (token.ExpirationDate < DateTime.Now)
+                {
+                    _cache.Remove(purchaserInfo);
+                    token = await GetTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
+                }
+            }
+            else
+            {
+                token = new PurchaseToken
+                {
+                    Value = await AcquirePurchaseTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo),
+                    IssuedDate = DateTime.Now,
+                    PurchaserInfo = purchaserInfo,
+                    TransactionInfo = transactionInfo
+                };
+
+                token.ExpirationDate = token.IssuedDate.AddMinutes(15);
+            }
+
+            return token;
+        }
     }
 }
