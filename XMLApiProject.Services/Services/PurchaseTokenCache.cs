@@ -24,16 +24,7 @@ namespace XMLApiProject.Services.Services
             PurchaseToken token;
             var key = (transactionAmount, purchaserInfo, transactionInfo).GetHashCode();
 
-            if (_cache.ContainsKey(key))
-            {
-                token = _cache[key];
-                if (token.IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
-                {
-                    _cache.Remove(key);
-                    token = await GetTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
-                }
-            }
-            else
+            if (_cache.ContainsKey(key) == false || _cache[key].IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
             {
                 token = new PurchaseToken
                 {
@@ -42,11 +33,15 @@ namespace XMLApiProject.Services.Services
                     PurchaserInfo = purchaserInfo,
                     TransactionInfo = transactionInfo
                 };
-                
+
                 if (!string.IsNullOrEmpty(token.Value))
                 {
                     _cache.Add(key, token);
                 }
+            }
+            else
+            {
+                token = _cache[key];
             }
 
             return token;
@@ -57,16 +52,7 @@ namespace XMLApiProject.Services.Services
             PurchaseToken token;
             var key = (transactionAmount, purchaserInfo, transactionInfo).GetHashCode();
 
-            if (_cache.ContainsKey(key))
-            {
-                token = _cache[key];
-                if (token.IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
-                {
-                    _cache.Remove(key);
-                    token = await GetAndConsumeTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
-                }
-            }
-            else
+            if (_cache.ContainsKey(key) == false || _cache[key].IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
             {
                 token = new PurchaseToken
                 {
@@ -75,6 +61,11 @@ namespace XMLApiProject.Services.Services
                     PurchaserInfo = purchaserInfo,
                     TransactionInfo = transactionInfo
                 };
+            }
+            else
+            {
+                token = _cache[key];
+                _cache.Remove(key);
             }
 
             return token;
