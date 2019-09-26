@@ -45,7 +45,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         #endregion
 
 
-        public string TransactionId { get; set; }
+        public Guid TransactionID { get; set; }
         public string ResponseDescription { get; set; }
 
         public T responseMessage { get; set; }

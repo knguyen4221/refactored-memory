@@ -9,7 +9,7 @@ using XMLApiProject.Services.Utilities.Constants;
 
 namespace XMLApiProject.Services.Services.Factories
 {
-    public class BaseRequestFactory: IHasBaseRequest
+    public class BaseRequestFactory : IHasBaseRequest
     {
         private IConfiguration _configuration;
 
@@ -18,16 +18,17 @@ namespace XMLApiProject.Services.Services.Factories
             _configuration = configuration;
         }
 
-        BaseRequest IHasBaseRequest.CreateBaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        public BaseRequest CreateBaseRequest(Guid transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
         {
-            var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage) {
+            var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage)
+            {
                 User = _configuration.GetSection("Credentials")["userName"],
                 Password = _configuration.GetSection("Credentials")["password"]
             };
             return baseRequest;
         }
 
-        BaseRequest IHasBaseRequest.CreateAuthorizeBaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        public BaseRequest CreateAuthorizeBaseRequest(Guid transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
         {
             var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage)
             {
@@ -37,7 +38,7 @@ namespace XMLApiProject.Services.Services.Factories
             return baseRequest;
         }
 
-        public BaseRequest CreateTrackBaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        public BaseRequest CreateTrackBaseRequest(Guid transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
         {
             var baseRequest = new BaseRequest(transactionId, requestDateTime, requestType, requestMessage)
             {
@@ -45,6 +46,12 @@ namespace XMLApiProject.Services.Services.Factories
                 Password = _configuration.GetSection("Credentials")["password"]
             };
             return baseRequest;
+        }
+
+        public BaseRequest CreateBaseRequest(DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        {
+            var generatedGuid = Guid.NewGuid();
+            return CreateBaseRequest(generatedGuid, requestDateTime, requestType, requestMessage);
         }
     }
 }

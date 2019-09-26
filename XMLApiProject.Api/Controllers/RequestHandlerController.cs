@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using XMLApiProject.Services.Models.PaymentService.Entities;
+using XMLApiProject.Api.Models.PaymentService.Entities;
 using XMLApiProject.Services.Services.Interfaces;
 using XMLApiProject.Services.Utilities;
 
@@ -45,7 +45,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Sends a request for a Multi-Use Request Token
+        /// Sends a request for a Multi-Use Request Token, which is used to tokenize a single card entry without the CVV
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -114,16 +114,16 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Public track request...One of the sampel operations
+        /// Authorize sale request with swiped transactions. Can be ignored. I don't think there will be transactions in a subscription system that works via card swipes.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("authorize/trackData")]
-        public async Task<ActionResult> TrackData([FromBody] TrackRequest request)
+        [HttpPost("authorize/swipe")]
+        public async Task<ActionResult> AuthorizeSwipe([FromBody]AuthorizeSwipeRequest request)
         {
             try
             {
-                var response = await _requestHandlerService.Track(request);
+                var response = await _requestHandlerService.AuthorizeSwipe(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
@@ -136,12 +136,17 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
-        [HttpPost("authorize/capture")]
-        public async Task<ActionResult> Capture([FromBody] AuthorizationRequest request)
+        /// <summary>
+        /// Authorize request with non-swipe
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("authorize")]
+        public async Task<ActionResult> Authorize([FromBody]AuthorizationRequest request)
         {
             try
             {
-                var response = await _requestHandlerService.Capture(request);
+                var response = await _requestHandlerService.Authorize(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
@@ -154,8 +159,13 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Use to tokenize a bank account number for ACH transactions
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("tokenizeAccount")]
-        public async Task<ActionResult> TokenizeAccount([FromBody] TokenizeAccountRequest request)
+        public async Task<ActionResult> TokenizeAccount([FromBody]TokenizeAccountRequest request)
         {
             try
             {
@@ -173,9 +183,13 @@ namespace XMLApiProject.Api.Controllers
         }
 
 
-
+        /// <summary>
+        /// Account inquiry request. Mainly just a balance inquiry. Any account inquiries are disabled.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("balanceInquiry")]
-        public async Task<ActionResult> BalanceInquiry([FromBody] BalanceInquiryRequest request)
+        public async Task<ActionResult> BalanceInquiry([FromBody]BalanceInquiryRequest request)
         {
             try
             {
@@ -218,7 +232,7 @@ namespace XMLApiProject.Api.Controllers
         //}
 
         /// <summary>
-        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// Gets Merchant Info for a merchant with a particular set of credentials
         /// </summary>
         /// <param name="purchaseToken"></param>
         /// <returns></returns>
@@ -241,7 +255,7 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
+        /// Use the void/refund request to issue a void against an unsettled authorization or a refund against a settled transaction
         /// </summary>
         /// <returns></returns>
         [HttpPost("voidRefund")]
@@ -263,11 +277,11 @@ namespace XMLApiProject.Api.Controllers
         }
 
         /// <summary>
-        /// Sends a request to initiate a settlement
+        /// Sends a request to initiate a settlement. Unsettled transactions will be submitted to the processors for settlement.
         /// </summary>
         /// <returns></returns>
         [HttpPost("initiateSettlement")]
-        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlement request)
+        public async Task<ActionResult> InitiateSettlement([FromBody]InitiateSettlementRequest request)
         {
             try
             {
@@ -289,7 +303,7 @@ namespace XMLApiProject.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("findTransaction")]
-        public async Task<ActionResult> FindTransaction([FromBody]FindTransaction request)
+        public async Task<ActionResult> FindTransaction([FromBody]FindTransactionRequest request)
         {
             try
             {
@@ -306,6 +320,11 @@ namespace XMLApiProject.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Used to confirm a previously authorized sale. Transactions that are not confirmed will be voided at settlement time.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("capture")]
         public async Task<ActionResult> CaptureRequest([FromBody]CaptureRequest request)
         {

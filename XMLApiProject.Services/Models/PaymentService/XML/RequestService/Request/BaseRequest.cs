@@ -25,14 +25,14 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         internal RequestTypes _requestType { get; set; }
         //Note: Going to be generated so it's pretty unnecessary
         [XmlIgnore]
-        internal int _transactionId { get; set; }
+        internal Guid _transactionId { get; set; }
         [XmlIgnore]
         public RequestMessageBase _requestMessage { get; set; }
         #endregion
 
         #region Xml Object Representation
         public string ClientIdentifier { get; set; } = "SOAP";
-        public string TransactionId { get { return _transactionId.ToString(); } set { _transactionId = int.Parse(value); } }
+        public string TransactionId { get { return _transactionId.ToString(); } set { _transactionId = Guid.Parse(value); } }
         public string RequestType
         {
             get
@@ -75,7 +75,7 @@ namespace XMLApiProject.Services.Models.XML.RequestService.Request
         /// <param name="_requestDateTime"></param>
         /// <param name="_requestType"></param>
         /// <param name="requestMessage"></param>
-        public BaseRequest(int transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
+        public BaseRequest(Guid transactionId, DateTime requestDateTime, RequestTypes requestType, RequestMessageBase requestMessage)
         {
             _transactionId = transactionId;
             _requestDateTime = requestDateTime;
