@@ -9,7 +9,6 @@ namespace XMLApiProject.Services.Models.PurchaseTokenService
         public string PurchaserInfo { get; set; }
         public string TransactionInfo { get; set; }
         public DateTime IssuedDate { get; set; }
-        public DateTime? ExpirationDate { get; set; }
 
         public string Value { get; set; }
     }

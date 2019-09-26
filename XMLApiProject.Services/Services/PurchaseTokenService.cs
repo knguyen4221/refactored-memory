@@ -16,10 +16,6 @@ namespace XMLApiProject.Services.Services
         private IConfiguration _configuration;
         private PurchaseTokenCache _cache;
 
-        public PurchaseTokenService()
-        {
-        }
-
         public PurchaseTokenService(IConfiguration configuration, PurchaseTokenCache cache)
         {
             _configuration = configuration;
