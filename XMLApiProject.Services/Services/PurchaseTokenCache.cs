@@ -29,7 +29,8 @@ namespace XMLApiProject.Services.Services
                 token = _cache[key];
                 if (token.IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
                 {
-                    _cache[key] = await GetTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
+                    _cache.Remove(key);
+                    token = await GetTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
                 }
             }
             else
@@ -61,7 +62,8 @@ namespace XMLApiProject.Services.Services
                 token = _cache[key];
                 if (token.IssuedDate.AddMinutes(tokenLifetimeDurationInMinutes) < DateTime.Now)
                 {
-                    _cache[key] = await GetAndConsumeTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
+                    _cache.Remove(key);
+                    token = await GetAndConsumeTokenAsync(userName, password, certificationId, transactionAmount, purchaserInfo, transactionInfo);
                 }
             }
             else
