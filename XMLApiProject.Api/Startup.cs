@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PurchaseTokenService;
 using XMLApiProject.Api.Utilities;
 using XMLApiProject.Services.Services;
 using XMLApiProject.Services.Services.Factories;

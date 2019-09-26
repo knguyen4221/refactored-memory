@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses
+﻿namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses
 {
     //May need to change this to GetMerchantInfo instead because of response name typo in documentation
     public class MerchantInfo

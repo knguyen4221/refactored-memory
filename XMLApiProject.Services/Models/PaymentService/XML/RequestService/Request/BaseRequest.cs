@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
-using XMLApiProject.Services.Models.PaymentService.Interfaces;
-using XMLApiProject.Services.Models.PaymentService.XML.RequestService;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request;
 using XMLApiProject.Services.Utilities.Constants;
 

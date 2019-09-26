@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using XMLApiProject.Services.Models.PaymentService.Entities;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request

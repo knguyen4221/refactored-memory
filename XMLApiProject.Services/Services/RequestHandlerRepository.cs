@@ -1,13 +1,11 @@
 ﻿using BridgePayService;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 using XMLApiProject.Services.Models.XML.RequestService.Request;
 using XMLApiProject.Services.Services.Interfaces;
 using XMLApiProject.Services.Utilities;

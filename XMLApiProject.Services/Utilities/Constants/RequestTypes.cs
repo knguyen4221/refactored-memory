@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace XMLApiProject.Services.Utilities.Constants
 {
     public enum RequestTypes
