@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Configurations>Debug;Release;Development</Configurations>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>563fd40b-ea15-4f96-b61e-2c532704e56f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
