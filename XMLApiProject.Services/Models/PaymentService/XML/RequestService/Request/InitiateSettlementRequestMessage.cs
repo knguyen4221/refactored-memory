@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using XMLApiProject.Services.Models.PaymentService.Entities;
+﻿using XMLApiProject.Services.Models.PaymentService.Entities;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
