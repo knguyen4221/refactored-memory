@@ -36,8 +36,8 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Respon
         [StringLength(14)]
         [JsonIgnore]
         public string TransactionDate {
-            get { return _transactionDate.ToString("yyyyMMddHHmmss"); }
-            set { _transactionDate = DateTime.ParseExact(value, "yyyyMMddHHmmss", CultureInfo.InvariantCulture); }
+            get { return _transactionDate.ToString("yyyyMMdd"); }
+            set { _transactionDate = DateTime.ParseExact(value, "yyyyMMdd", CultureInfo.InvariantCulture); }
         }
 
         public uint Balance { get; set; }
