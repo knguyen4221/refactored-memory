@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using XMLApiProject.Services.Models.PaymentService.Entities;
 
 namespace XMLApiProject.Api.Models.PaymentService.Entities
@@ -31,9 +32,12 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         /// This is pretty useful for when you have a purchase token because the purchase token makes comparison with this and several other properties to verify things
         /// </summary>
         [DefaultValue(null)]
+        [JsonIgnore]
         public uint? InvoiceNum { get; set; }
-        [DefaultValue(500)]
+        [DefaultValue(null)]
+        [JsonIgnore]
         public uint? FeeAmount { get; set; }
+        [JsonIgnore]
         [DefaultValue(null)]
         public uint? TipAmount { get; set; }
         [DefaultValue(999)]
@@ -53,11 +57,13 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         /// Purchase order number, user supplied. Optional
         /// </summary>
         [DefaultValue(null)]
+        [JsonIgnore]
         public string PONum { get; set; }
         /// <summary>
         /// This is pretty useful for when you have a purchase token because the purchase token makes comparison with this and several other properties to verify things
         /// </summary>
         [DefaultValue(null)]
+        [JsonIgnore]
         public string CustomerAccountCode { get; internal set; }
         /// <summary>
         /// Contract Id for recurring billing

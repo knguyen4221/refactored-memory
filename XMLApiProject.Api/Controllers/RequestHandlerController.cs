@@ -66,29 +66,6 @@ namespace XMLApiProject.Api.Controllers
                 return StatusCode(500, ex);
             }
         }
-
-        /// <summary>
-        /// Generate Encryption Key request. Note: However unusable because there's a key missing? Not sure.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("encryptionKey")]
-        public async Task<ActionResult> GenerateEncryptionKey()
-        {
-            try
-            {
-                var response = await _requestHandlerService.GenerateEncryptionKey();
-                return Ok(response);
-            }
-            catch (SoapEndpointException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex);
-            }
-            
-        }
         
         /// <summary>
         /// Sends a request to look up the attached BIN, or return Credit if no BIN is defined
@@ -101,29 +78,6 @@ namespace XMLApiProject.Api.Controllers
             try
             {
                 var response = await _requestHandlerService.BINLookup(request);
-                return Ok(response);
-            }
-            catch (SoapEndpointException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex);
-            }
-        }
-
-        /// <summary>
-        /// Authorize sale request with swiped transactions. Can be ignored. I don't think there will be transactions in a subscription system that works via card swipes.
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpPost("authorize/swipe")]
-        public async Task<ActionResult> AuthorizeSwipe([FromBody]AuthorizeSwipeRequest request)
-        {
-            try
-            {
-                var response = await _requestHandlerService.AuthorizeSwipe(request);
                 return Ok(response);
             }
             catch (SoapEndpointException ex)
