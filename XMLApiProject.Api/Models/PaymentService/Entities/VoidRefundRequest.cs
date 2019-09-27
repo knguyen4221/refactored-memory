@@ -13,7 +13,7 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         public string MerchantAccountCode { get; set; }
         [DefaultValue(500)]
         public uint Amount { get; set; }
-        [DefaultValue("3715542104")]
+        [DefaultValue("GRAB THE GATEWAYTRANSID FROM THE AUTH RESPONSE")]
         public string ReferenceNumber { get; set; }
         [DefaultValue("refund")]
         public string TransactionType { get; set; }

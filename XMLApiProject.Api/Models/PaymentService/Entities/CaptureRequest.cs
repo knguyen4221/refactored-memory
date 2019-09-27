@@ -45,7 +45,7 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         [DefaultValue(null)]
         [JsonIgnore]
         public string IntegrationMethod { get; set; }
-        [DefaultValue("3715542104")]
+        [DefaultValue("GRAB THE GATEWAYTRANSID FROM THE AUTH RESPONSE")]
         public string ReferenceNumber { get; set; }
     }
 }
