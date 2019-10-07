@@ -208,7 +208,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ExpirationDate = expirationDate;
         }
 
-        public AuthorizationRequestMessage(IAuthorizationRequest authorizationRequest, Guid serviceFeeId, IConfiguration configuration)
+        public AuthorizationRequestMessage(IAuthorizationRequest authorizationRequest, Guid serviceFeeId = default(Guid), IConfiguration configuration = null)
         {
             //Missing custom fields for now
             MerchantCode = authorizationRequest.MerchantCode;
@@ -233,12 +233,14 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             SettlementDelay = authorizationRequest.SettlementDelay;
             FeeAmount = authorizationRequest.FeeAmount;
             PartialAuthorization = authorizationRequest.PartialAuthorization;
-            ServiceFee = new ServiceFee() {
-                Amount = authorizationRequest.Amount,
-                ServiceUser = configuration["userName"],
-                ServicePassword = configuration["password"],
-                ServiceFeeID = serviceFeeId
-            };
+            if (authorizationRequest.ServiceFeeAmount.HasValue) { 
+                ServiceFee = new ServiceFee() {
+                    Amount = authorizationRequest.Amount,
+                    ServiceUser = configuration["userName"],
+                    ServicePassword = configuration["password"],
+                    ServiceFeeID = serviceFeeId
+                };
+            }
         }
 
         public AuthorizationRequestMessage(IAuthorizeSwipeRequest trackRequest)

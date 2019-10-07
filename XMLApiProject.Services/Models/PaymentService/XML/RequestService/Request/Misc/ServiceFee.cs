@@ -14,6 +14,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         [Required]
         [StringLength(8)]
         public uint Amount { get; set; }
+        //Note: May want to start to move away from these as we figure out how to use MerchantCode/MerchantAccountCode/ResellerCode
         public string ServiceUser { get; set; }
         public string ServicePassword { get; set; }
     }
