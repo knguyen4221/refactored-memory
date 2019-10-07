@@ -45,6 +45,7 @@
         public string WalletResponseCode { get; set; }
         public string ResponseTypeDescription { get; set; }
         public string MerchantCategoryCode { get; set; }
+        public ServiceFeeResult ServiceFeeResult { get; set; }
         #region EMVData returns
         public string ReceiptTagData { get; set; }
         public string IssuerTagData { get; set; }

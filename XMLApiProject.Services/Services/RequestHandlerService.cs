@@ -47,8 +47,9 @@ namespace XMLApiProject.Services.Services
         //Note: uses authorize request
         public async Task<BaseResponse<Auth>> Authorize(IAuthorizationRequest request)
         {
+            var serviceFeeId = Guid.NewGuid();
             var baseRequest = _baseRequestFactory.CreateBaseRequest(Guid.NewGuid(), DateTime.Now, Utilities.Constants.RequestTypes.Authorization,
-                new AuthorizationRequestMessage(request));
+                new AuthorizationRequestMessage(request, serviceFeeId, _configuration.GetSection("Credentials")));
             return await _requestHandlerRepository.SendRequestAsync<BaseResponse<Auth>>(baseRequest._requestMessage.GetResponseRootName(), baseRequest);
         } 
 

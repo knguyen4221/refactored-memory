@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 using XMLApiProject.Services.Models.PaymentService.Entities;
+using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request.Misc;
 using XMLApiProject.Services.Models.PaymentService.XML.RequestService.Responses;
 
 namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Request
@@ -173,6 +175,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         [Required]
         public string SoftwareVendor { get; set; }
         public string SecurityTechnology { get; set; }
+        public ServiceFee ServiceFee { get; set; }
 
         #endregion
 
@@ -205,7 +208,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             ExpirationDate = expirationDate;
         }
 
-        public AuthorizationRequestMessage(IAuthorizationRequest authorizationRequest)
+        public AuthorizationRequestMessage(IAuthorizationRequest authorizationRequest, Guid serviceFeeId = default(Guid), IConfiguration configuration = null)
         {
             //Missing custom fields for now
             MerchantCode = authorizationRequest.MerchantCode;
@@ -230,6 +233,14 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             SettlementDelay = authorizationRequest.SettlementDelay;
             FeeAmount = authorizationRequest.FeeAmount;
             PartialAuthorization = authorizationRequest.PartialAuthorization;
+            if (authorizationRequest.ServiceFeeAmount.HasValue) { 
+                ServiceFee = new ServiceFee() {
+                    Amount = authorizationRequest.Amount,
+                    ServiceUser = configuration["userName"],
+                    ServicePassword = configuration["password"],
+                    ServiceFeeID = serviceFeeId
+                };
+            }
         }
 
         public AuthorizationRequestMessage(IAuthorizeSwipeRequest trackRequest)
@@ -271,6 +282,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public bool ShouldSerializeWalletPaymentMethodID()
         {
             return WalletPaymentMethodID.HasValue;
+        }
+
+        public bool ShouldSerializeServiceFee()
+        {
+            return !ServiceFee.Equals(null);
         }
 
         public bool ShouldSerializeSecurityCode()

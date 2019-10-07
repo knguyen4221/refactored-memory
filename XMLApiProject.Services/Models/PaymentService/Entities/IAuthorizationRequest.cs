@@ -26,5 +26,7 @@
         string Token { get; set; }
         uint? SettlementDelay { get; set; }
         string PartialAuthorization { get; set; }
+        uint? ServiceFeeAmount { get; set; }
+
     }
 }
