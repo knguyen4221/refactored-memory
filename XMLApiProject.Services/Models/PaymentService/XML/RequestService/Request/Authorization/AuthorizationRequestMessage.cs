@@ -286,7 +286,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
 
         public bool ShouldSerializeServiceFee()
         {
-            return !ServiceFee.Equals(null);
+            return ServiceFee != null;
         }
 
         public bool ShouldSerializeSecurityCode()
