@@ -23,7 +23,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         /// <summary>
         /// Used in place of the PaymentAccountNUmber when gotten from the multiuse token request
         /// </summary>
-        public uint? Token { get; set; }
+        public string Token { get; set; }
         public Guid? WalletPaymentMethodID { get; set; }
         public string WalletToken { get; set; }
         public string WalletKey { get; set; }
@@ -225,7 +225,11 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             HolderType = authorizationRequest.HolderType;
             AccountStreet = authorizationRequest.AccountStreet;
             AccountZip = authorizationRequest.AccountZip;
+            Token = authorizationRequest.Token;
             ContractId = authorizationRequest.ContractId;
+            SettlementDelay = authorizationRequest.SettlementDelay;
+            FeeAmount = authorizationRequest.FeeAmount;
+            PartialAuthorization = authorizationRequest.PartialAuthorization;
         }
 
         public AuthorizationRequestMessage(IAuthorizeSwipeRequest trackRequest)
@@ -327,11 +331,6 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
         public bool ShouldSerializeSettlementDelay()
         {
             return SettlementDelay.HasValue;
-        }
-
-        public bool ShouldSerializeToken()
-        {
-            return Token.HasValue;
         }
 
         public bool ShouldSerializeTransitAmt()

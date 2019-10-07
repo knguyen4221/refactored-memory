@@ -64,5 +64,8 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         /// </summary>
         [DefaultValue(20)]
         public uint? ContractId { get; set; }
+        public string Token { get; set; }
+        public uint? SettlementDelay { get; set; }
+        public string PartialAuthorization { get; set; }
     }
 }

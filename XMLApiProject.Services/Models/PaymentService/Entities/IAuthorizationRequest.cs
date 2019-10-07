@@ -23,5 +23,8 @@
         string PONum { get; set; }
         string CustomerAccountCode { get; }
         uint? ContractId { get; set; }
+        string Token { get; set; }
+        uint? SettlementDelay { get; set; }
+        string PartialAuthorization { get; set; }
     }
 }
