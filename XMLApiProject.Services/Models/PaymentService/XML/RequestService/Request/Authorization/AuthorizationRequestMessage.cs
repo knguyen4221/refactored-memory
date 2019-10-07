@@ -235,7 +235,7 @@ namespace XMLApiProject.Services.Models.PaymentService.XML.RequestService.Reques
             PartialAuthorization = authorizationRequest.PartialAuthorization;
             if (authorizationRequest.ServiceFeeAmount.HasValue) { 
                 ServiceFee = new ServiceFee() {
-                    Amount = authorizationRequest.Amount,
+                    Amount = authorizationRequest.ServiceFeeAmount.Value,
                     ServiceUser = configuration["userName"],
                     ServicePassword = configuration["password"],
                     ServiceFeeID = serviceFeeId
