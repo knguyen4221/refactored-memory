@@ -67,5 +67,6 @@ namespace XMLApiProject.Api.Models.PaymentService.Entities
         public string Token { get; set; }
         public uint? SettlementDelay { get; set; }
         public string PartialAuthorization { get; set; }
+        public uint? ServiceFeeAmount { get; set; }
     }
 }
